@@ -14,10 +14,10 @@ if (isset($_POST['addCustomerBtn'])) {
     $confirmPassword = $_POST['confirmPassword'];
 
     // Create a new Customer object
-    $customer = new Customer($firstName, $lastName, $email, $number, $password, $confirmPassword);
+    $customer = new Customer($conn);
 
     // Call the createAccount method
-    if ($customer->createAccount($conn)) {
+    if ($customer->createAccount($firstName,$lastName,$email,$password,$number)) {
         header("Location: ../html/login.html"); // Redirect to login page on success
         exit;
     } else {
@@ -25,3 +25,4 @@ if (isset($_POST['addCustomerBtn'])) {
     }
 }
 ?>
+

@@ -1,34 +1,36 @@
 <?php
 include 'conf.php';
-
-require_once 'User.php';
-
-class Customer extends User {
-    private $age;
-    private $dob;
-    private $province;
-    private $city;
-    private $streetName;
+class Customer {
+    private $conn;
+    private $firstName;
+    private $lastName;
+    private $email;
+    private $number;
+    private $password;
+    private $confirmPassword;
 
     public function __construct($db) {
-        parent::__construct($db);
+        $this->conn = $db;
     }
 
-    // Getters and Setters
-    public function getAge() { return $this->age; }
-    public function setAge($age) { $this->age = $age; }
+    // Getters and setters
+    public function getFirstName() { return $this->firstName; }
+    public function setFirstName($firstName) { $this->firstName = $firstName; }
 
-    public function getDob() { return $this->dob; }
-    public function setDob($dob) { $this->dob = $dob; }
+    public function getLastName() { return $this->lastName; }
+    public function setLastName($lastName) { $this->lastName = $lastName; }
 
-    public function getProvince() { return $this->province; }
-    public function setProvince($province) { $this->province = $province; }
+    public function getEmail() { return $this->email; }
+    public function setEmail($email) { $this->email = $email; }
 
-    public function getCity() { return $this->city; }
-    public function setCity($city) { $this->city = $city; }
+    public function getNumber() { return $this->number; }
+    public function setNumber($number) { $this->number = $number; }
 
-    public function getStreetName() { return $this->streetName; }
-    public function setStreetName($streetName) { $this->streetName = $streetName; }
+    public function getPassword() { return $this->password; }
+    public function setPassword($password) { $this->password = $password; }
+
+    public function getConfirmPassword() { return $this->confirmPassword; }
+    public function setConfirmPassword($confirmPassword) { $this->confirmPassword = $confirmPassword; }
 
     // Method to create an account
     public function createAccount($firstName, $lastName, $email, $password, $number) {
@@ -59,12 +61,7 @@ class Customer extends User {
             return false; // First query failed
         }
     }
-
-
-    public function deleteAccount() {}
-    public function contactCustomer() {}
-    public function viewCustomer() {}
-
+    
     
 }
 ?>
