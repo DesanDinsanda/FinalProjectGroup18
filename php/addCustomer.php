@@ -2,7 +2,7 @@
 include 'conf.php';  // Include database connection
 
 // Include the Customer class
-include 'Customer.php';
+include 'classCustomer.php';
 
 if (isset($_POST['addCustomerBtn'])) {
     // Get form values

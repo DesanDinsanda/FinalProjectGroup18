@@ -1,7 +1,7 @@
 <?php
 include 'conf.php';
 
-require_once 'User.php';
+require_once 'classUser.php';
 
 class Customer extends User {
     private $age;
@@ -47,8 +47,11 @@ class Customer extends User {
             
             // Now insert into user_telno using the retrieved user ID
             $sql2 = "INSERT INTO user_telno (ID, telNO) VALUES ('$userID', '$number')";
+
+            // Now insert into customer using the retrieved user ID
+            $sql3 = "INSERT INTO customer (ID) VALUES ('$userID')";
     
-            if (mysqli_query($this->conn, $sql2)) {  // Use $this->conn
+            if (mysqli_query($this->conn, $sql2) && mysqli_query($this->conn, $sql3)) {  // Use $this->conn
                 return true; // Both inserts succeeded
             } else {
                 // Rollback the first insert if second fails (manual rollback)
@@ -61,9 +64,69 @@ class Customer extends User {
     }
 
 
+    //Method to View customers
+    public function viewCustomer() {
+        $sql = "SELECT u.ID, u.firstName,u.lastName, u.email,   ut.telNO,   o.orderID 
+        FROM user u INNER JOIN user_telno ut ON u.ID = ut.ID
+                    INNER JOIN customer c ON u.ID = c.ID 
+                    INNER JOIN orders o ON u.ID = o.customerID";
+        $result = mysqli_query($this->conn, $sql);
+        echo <<<HTML
+
+        <html>
+        <head>
+        <title>customers</title>
+        </head>
+        <body>
+            <div class="container my-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>email</th>
+                    <th>Phone Number</th>
+                    <th>Order ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+HTML;
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo <<<HTML
+            <tr>
+                <td>{$row['ID']}</td>
+                <td>{$row['firstName']}</td>
+                <td>{$row['lastName']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['telNO']}</td>
+                <td>{$row['orderID']}</td>
+                <td>
+                    <a href='mailto:{$row['email']}' class='btn btn-success btn-sm'>Contact</a>
+                </td>
+
+                
+            </tr>
+HTML;
+    }
+}
+
+echo <<<HTML
+            </tbody>
+        </table>
+    </div> 
+        </body>
+        </html>
+HTML;
+    }
+
+
     public function deleteAccount() {}
     public function contactCustomer() {}
-    public function viewCustomer() {}
+    
 
     
 }

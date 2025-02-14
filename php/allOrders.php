@@ -31,7 +31,7 @@
                         Orders
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="ordersDropdown">
-                        <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
+                        <li><a class="dropdown-item" href="#">All Orders</a></li>
                         <li><a class="dropdown-item" href="#">Pending Orders</a></li>
                         <li><a class="dropdown-item" href="#">Cancelled Orders</a></li>
                         <li><a class="dropdown-item" href="#">Rescheduled Orders</a></li>
@@ -75,13 +75,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <br><br><br><br><br><br>
-<h2 class="text-center text-primary"><b>Registered Customers</b></h2>
+<h2 class="text-center text-primary"><b>All Orders</b></h2>
 <?php
 include 'conf.php';
-include 'classCustomer.php';
+include 'classOrders.php';
 
-$customer = new Customer($conn);
-$customer->viewCustomer();
+$orders = new Orders($conn);
+$orders->viewAllOrderDetails();
 
 ?>
 </body>

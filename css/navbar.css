@@ -68,3 +68,60 @@ body {
 .img-section img:hover {
     transform: scale(1.05);
 }
+
+
+
+/* General Dropdown Styling */
+.dropdown-menu-custom {
+  background: rgb(249, 244, 233);
+  border: 1px solid black;
+  min-width: 150px;
+  text-align: left;
+}
+
+.dropdown-menu-custom a {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+}
+
+.dropdown-menu-custom a:hover {
+  background: #f8d775; /* Highlight color */
+  color: black;
+}
+
+/* Orders Dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Calendar Icon */
+.calendar-img {
+  width: 30px;
+  height: auto;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.calendar-img:hover {
+  transform: scale(1.1);
+}
+
+/* Profile Dropdown */
+.profile-container {
+  position: relative;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav-item.dropdown.profile-container:hover .dropdown-menu {
+  display: block;
+}
