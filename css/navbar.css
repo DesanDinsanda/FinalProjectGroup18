@@ -1,0 +1,70 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: rgb(240, 230, 200) !important;
+}
+  .navbar-brand img {
+    border-radius: 10px;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: large;
+    font-weight: 500;
+    color:#100303;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #3010ce;
+  }
+  
+  .btn-dark {
+    background-color: #2c1e1e;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: white;
+  }
+  
+  .btn-outline-dark {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+
+/* Header Section */
+.header {
+    background: rgb(249, 244, 233);
+}
+
+/* Styling for Heading */
+.header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 60px;
+    margin: 20px 0;
+    font-style: inherit;
+}
+
+/* Styling for Paragraph */
+.header p {
+    font-size: 18px;
+    color: #333;
+    font-style: italic;
+}
+
+/* Image Section */
+.img-section img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-section img:hover {
+    transform: scale(1.05);
+}
