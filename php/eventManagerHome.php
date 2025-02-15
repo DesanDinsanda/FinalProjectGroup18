@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="eventManagerHome.php">Customers</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Inventory</a></li>
+                <li class="nav-item"><a class="nav-link" href="viewInventoryLevel.php">Inventory</a></li>
                 
                 <!-- Orders Dropdown -->
                 <li class="nav-item dropdown">
@@ -33,12 +33,12 @@
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="ordersDropdown">
                         <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
                         <li><a class="dropdown-item" href="pendingOrders.php">Pending Orders</a></li>
-                        <li><a class="dropdown-item" href="#">Cancelled Orders</a></li>
-                        <li><a class="dropdown-item" href="#">Rescheduled Orders</a></li>
+                        <li><a class="dropdown-item" href="cancelledOrders.php">Cancelled Orders</a></li>
+                        <li><a class="dropdown-item" href="rescheduledOrders.php">Rescheduled Orders</a></li>
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="#">Suppliers</a></li>
+                <li class="nav-item"><a class="nav-link" href="supplier.php">Suppliers</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Report</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Review</a></li>
 
@@ -62,7 +62,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Orders</a></li>
+                        <li><a class="dropdown-item" href="favoriteSupplier.php">Favorite Suppliers</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
                 </li>
@@ -75,7 +75,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <br><br><br><br><br><br>
-<h2 class="text-center text-primary"><b>Registered Customers</b></h2>
+<h2 class="text-center text-primary"><b> Customers</b></h2>
 <?php
 include 'conf.php';
 include 'classCustomer.php';
