@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>all orders</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -31,8 +31,8 @@
                         Orders
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="ordersDropdown">
-                        <li><a class="dropdown-item" href="#">All Orders</a></li>
-                        <li><a class="dropdown-item" href="#">Pending Orders</a></li>
+                    <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
+                    <li><a class="dropdown-item" href="pendingOrders.php">Pending Orders</a></li>
                         <li><a class="dropdown-item" href="#">Cancelled Orders</a></li>
                         <li><a class="dropdown-item" href="#">Rescheduled Orders</a></li>
                     </ul>

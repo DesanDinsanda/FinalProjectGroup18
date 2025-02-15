@@ -39,7 +39,7 @@ class Customer extends User {
         $this->number = $number;
     
         // Insert into user table first
-        $sql = "INSERT INTO user (firstName, lastName, email, password) VALUES ('$firstName','$lastName','$email','$password')";
+        $sql = "INSERT INTO user (firstName, lastName, email, password) VALUES ('$this->firstName','$this->lastName','$this->email','$this->password')";
     
         if (mysqli_query($this->conn, $sql)) {  // Use $this->conn
             // Get the last inserted ID
