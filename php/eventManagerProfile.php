@@ -105,7 +105,7 @@ if (isset($_POST['updateProfile'])) {
 </head>
 <body>
   <div class="container">
-    <h2>Edit Customer Profile</h2>
+    <h2>Edit Event Manger Profile</h2>
     <form method="POST" action="eventManagerProfile.php" onsubmit="return validateForm()">
     <div class="form-group">
         <label for="id">ID</label>

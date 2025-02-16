@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="nav-item"><a class="nav-link" href="supplier.php">Suppliers</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Report</a></li>
+                <li class="nav-item"><a class="nav-link" href="reportPage.php">Report</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Review</a></li>
 
                 <!-- Calendar Icon -->
