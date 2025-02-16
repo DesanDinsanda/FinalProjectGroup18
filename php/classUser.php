@@ -47,8 +47,8 @@ class User {
     if (mysqli_num_rows($adminResult) == 1) {
         // Admin login successful
         session_start();
-        $_SESSION['adminEmail'] = $email;  // Store session for admin
-        header("Location: ../html/test.html");
+        $_SESSION['email'] = $email;  // Store session for admin
+        header("Location: adminHome.php");
         exit();
     }
 
@@ -61,7 +61,7 @@ class User {
     if (mysqli_num_rows($customerResult) == 1) {
         // Customer login successful
         session_start();
-        $_SESSION['customerEmail'] = $email;  // Store session for customer
+        $_SESSION['email'] = $email;  // Store session for customer
         header("Location: ../html/create.html");
         exit();
     }
@@ -75,8 +75,8 @@ class User {
     if (mysqli_num_rows($managerResult) == 1) {
     // Manager login successful
     session_start();
-    $_SESSION['managerEmail'] = $email;  // Store session for customer
-    header("Location: ../html/test2.html");
+    $_SESSION['email'] = $email;  // Store session for customer
+    header("Location: eventManagerHome.php");
     exit();
 }
 
@@ -84,10 +84,39 @@ class User {
     echo "<script>alert('Invalid email or password!'); window.location.href='../html/login.html';</script>";;
 
     }
+    public function updateAccount($firstName, $lastName, $email, $password, $number,$ID) {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
+        $this->password = $password;
+        $this->number = $number;
+        $this->id = $ID;
+        $sql = "UPDATE user SET firstName = '$this->firstName', lastName = '$this->lastName', email = '$this->email', password = '$this->password' WHERE email = '$this->email' ";
+        $result = mysqli_query($this->conn, $sql);
+    
+    
+        $sql2 = "UPDATE user_telno SET telNO = '$this->number' WHERE ID = '$this->id' ";
+        $result2 = mysqli_query($this->conn, $sql2);
+    
+        if($result == true && $result2 == true) {
+            echo "<script>alert('Updated succesfully!'); window.location='eventManagerProfile.php';</script>";
+        }else{
+            echo "<script>alert('There is an Error'); window.location='eventManagerProfile.php';</script>";
+        }
+    
+    }
 
-    public function logOut() {}
+    public function logOut() {
+        session_start();
+        session_unset();  // Unset all session variables
+        session_destroy();  // Destroy the session
+
+        // Redirect to login page
+        header("Location: ../html/login.html");
+exit();
+    }
+
     public function resetPassword() {}
-    public function updateAccount() {}
     public function validateEmail() {}
     public function validatePassword() {}
     public function selectResetPassword() {}

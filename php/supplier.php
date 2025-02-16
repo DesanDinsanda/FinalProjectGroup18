@@ -61,9 +61,9 @@
                         <img src="../images/adminProfilePic.png" alt="Profile" class="profile-img">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="eventManagerProfile.php">Profile</a></li>
                         <li><a class="dropdown-item" href="favoriteSupplier.php">Favorite Suppliers</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
