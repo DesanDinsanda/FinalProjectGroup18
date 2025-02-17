@@ -238,9 +238,75 @@ HTML;
     HTML;
         }
 
-    public function deleteSupplier() {}
-    public function addSupplier() {}
-    public function updateSupplier() {}
+    
+    // Method to add a new supllier
+    public function addSupplier($firstName, $lastName, $telNO, $email, $province, $city, $streetName) {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->telNO = $telNO;
+        $this->email = $email;
+        $this->province = $province;
+        $this->city = $city;
+        $this->streetName = $streetName;
+
+    
+        // Insert supplier details
+        $sql = "INSERT INTO supplier (firstName, lastName, email, province, city, streetName) 
+                VALUES ('$this->firstName', '$this->lastName', '$this->email', '$this->province', '$this->city', '$this->streetName')";
+
+        if (mysqli_query($this->conn, $sql)) {
+            $supplierID = mysqli_insert_id($this->conn);
+            $sql2 = "INSERT INTO supplier_telno (supplierID, telNO) VALUES ('$supplierID', '$telNO')";
+            mysqli_query($this->conn, $sql2);
+            return "Supplier added successfully!";
+        } else {
+            return "Error adding supplier!";
+        }
+    }
+
+
+    public function deleteSupplier($supplierID) {
+        $sql1 = "DELETE FROM supplier_telno WHERE supplierID = '$supplierID'";
+        mysqli_query($this->conn, $sql1);
+
+        $sql2 = "DELETE FROM supplier WHERE supplierID = '$supplierID'";
+        if (mysqli_query($this->conn, $sql2)) {
+            return "Supplier deleted successfully!";
+        } else {
+            return "Error deleting supplier!";
+        }
+    }
+
+
+    // Method to get supplier details by supplierID
+    public function getSupplierDetails($supplierID) {
+        $sql = "SELECT s.firstName, s.lastName, st.telNO, s.email, s.province, s.city, s.streetName
+                FROM supplier s
+                JOIN supplier_telno st ON s.supplierID = st.supplierID
+                WHERE s.supplierID = '$supplierID'";
+
+        $result = mysqli_query($this->conn, $sql);
+        if ($result) {
+            return mysqli_fetch_assoc($result);
+        } else {
+            return null;
+        }
+    }
+
+    // Method to update supplier details
+    public function editSupplier($supplierID, $firstName, $lastName, $telNO, $email, $province, $city, $streetName) {
+        $sql = "UPDATE supplier SET firstName = '$firstName', lastName = '$lastName', email = '$email', 
+                province = '$province', city = '$city', streetName = '$streetName' 
+                WHERE supplierID = '$supplierID'";
+
+        if (mysqli_query($this->conn, $sql)) {
+            $sql2 = "UPDATE supplier_telno SET telNO = '$telNO' WHERE supplierID = '$supplierID'";
+            mysqli_query($this->conn, $sql2);
+            return "Supplier updated successfully!";
+        } else {
+            return "Error updating supplier!";
+        }
+    }
     
     
     public function selectSupplier() {}
