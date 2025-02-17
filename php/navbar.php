@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    
-    
-</head>
-<body>
 <nav class="navbar fixed-top navbar-expand-lg bg-light shadow">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -31,7 +17,7 @@
                         Orders
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="ordersDropdown">
-                        <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
+                    <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
                         <li><a class="dropdown-item" href="pendingOrders.php">Pending Orders</a></li>
                         <li><a class="dropdown-item" href="cancelledOrders.php">Cancelled Orders</a></li>
                         <li><a class="dropdown-item" href="rescheduledOrders.php">Rescheduled Orders</a></li>
@@ -44,7 +30,7 @@
 
                 <!-- Calendar Icon -->
                 <li class="nav-item">
-                    <a class="nav-link" href="calendar.php">
+                    <a class="nav-link" href="#">
                         <img src="../images/calendar.png" alt="Calendar" class="calendar-img">
                     </a>
                 </li>
@@ -73,16 +59,3 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<br><br><br><br><br><br>
-<h2 class="text-center text-primary"><b> Customers</b></h2>
-<?php
-include 'conf.php';
-include 'classCustomer.php';
-
-$customer = new Customer($conn);
-$customer->viewCustomer();
-
-?>
-</body>
-</html>

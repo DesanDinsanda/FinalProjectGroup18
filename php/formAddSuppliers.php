@@ -8,7 +8,7 @@ $sql = "SELECT s.supplierID, s.firstName, s.lastName, s.email, s.province, s.cit
 
 $result = mysqli_query($conn, $sql);
 
-echo '
+echo <<<HTML
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -45,7 +45,7 @@ echo '
         </div>
         <div class="mb-3">
             <label class="form-label fw-bold">Telephone Number</label>
-            <input type="number" class="form-control" name="telNO" required>
+            <input type="text" class="form-control" name="telNO" required>
         </div>
         <div class="mb-3">
             <label class="form-label fw-bold">Email</label>
@@ -84,6 +84,7 @@ echo '
                         </tr>
                     </thead>
                     <tbody>';
+HTML;
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
