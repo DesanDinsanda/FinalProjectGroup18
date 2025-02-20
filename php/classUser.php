@@ -45,7 +45,6 @@ class User {
     $adminResult = mysqli_query($this->conn, $adminQuery);
 
     if (mysqli_num_rows($adminResult) == 1) {
-        // Admin login successful
         session_start();
         $_SESSION['email'] = $email;  // Store session for admin
         header("Location: adminHome.php");
@@ -59,7 +58,6 @@ class User {
     $customerResult = mysqli_query($this->conn, $customerQuery);
 
     if (mysqli_num_rows($customerResult) == 1) {
-        // Customer login successful
         session_start();
         $_SESSION['email'] = $email;  // Store session for customer
         header("Location: ../html/create.html");
@@ -73,7 +71,6 @@ class User {
     $managerResult = mysqli_query($this->conn, $managerQuery);
 
     if (mysqli_num_rows($managerResult) == 1) {
-    // Manager login successful
     session_start();
     $_SESSION['email'] = $email;  // Store session for customer
     header("Location: eventManagerHome.php");
@@ -99,9 +96,9 @@ class User {
         $result2 = mysqli_query($this->conn, $sql2);
     
         if($result == true && $result2 == true) {
-            echo "<script>alert('Updated succesfully!'); window.location='eventManagerProfile.php';</script>";
+            return true;
         }else{
-            echo "<script>alert('There is an Error'); window.location='eventManagerProfile.php';</script>";
+            return false;
         }
     
     }

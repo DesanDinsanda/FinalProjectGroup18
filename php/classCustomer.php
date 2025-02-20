@@ -38,28 +38,24 @@ class Customer extends User {
         $this->password = $password;
         $this->number = $number;
     
-        // Insert into user table first
         $sql = "INSERT INTO user (firstName, lastName, email, password) VALUES ('$this->firstName','$this->lastName','$this->email','$this->password')";
     
-        if (mysqli_query($this->conn, $sql)) {  // Use $this->conn
+        if (mysqli_query($this->conn, $sql)) { 
             // Get the last inserted ID
             $userID = mysqli_insert_id($this->conn);
             
-            // Now insert into user_telno using the retrieved user ID
             $sql2 = "INSERT INTO user_telno (ID, telNO) VALUES ('$userID', '$number')";
 
-            // Now insert into customer using the retrieved user ID
             $sql3 = "INSERT INTO customer (ID) VALUES ('$userID')";
     
-            if (mysqli_query($this->conn, $sql2) && mysqli_query($this->conn, $sql3)) {  // Use $this->conn
-                return true; // Both inserts succeeded
+            if (mysqli_query($this->conn, $sql2) && mysqli_query($this->conn, $sql3)) {  
+                return true; 
             } else {
-                // Rollback the first insert if second fails (manual rollback)
                 mysqli_query($this->conn, "DELETE FROM user WHERE ID = '$userID'");
                 return false;
             }
         } else {
-            return false; // First query failed
+            return false; 
         }
     }
 
@@ -123,6 +119,61 @@ echo <<<HTML
 HTML;
     }
 
+
+    public function viewRegisteredUsers() {
+        $sql = "SELECT u.ID, u.firstName,u.lastName, u.email,   ut.telNO
+        FROM user u INNER JOIN user_telno ut ON u.ID = ut.ID
+                    INNER JOIN customer c ON u.ID = c.ID ";
+        $result = mysqli_query($this->conn, $sql);
+        echo <<<HTML
+
+        <html>
+        <head>
+        <title>customers</title>
+        </head>
+        <body>
+            <div class="container my-4">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>email</th>
+                    <th>Phone Number</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+HTML;
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo <<<HTML
+            <tr>
+                <td>{$row['ID']}</td>
+                <td>{$row['firstName']}</td>
+                <td>{$row['lastName']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['telNO']}</td>
+                <td>
+                    <a href='mailto:{$row['email']}' class='btn btn-success btn-sm'>Contact</a>
+                </td>
+
+                
+            </tr>
+HTML;
+    }
+}
+
+echo <<<HTML
+            </tbody>
+        </table>
+    </div> 
+        </body>
+        </html>
+HTML;
+    }
 
     public function deleteAccount() {}
     public function contactCustomer() {}

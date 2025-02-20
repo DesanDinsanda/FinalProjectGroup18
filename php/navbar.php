@@ -17,7 +17,7 @@
                         Orders
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="ordersDropdown">
-                    <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
+                        <li><a class="dropdown-item" href="allOrders.php">All Orders</a></li>
                         <li><a class="dropdown-item" href="pendingOrders.php">Pending Orders</a></li>
                         <li><a class="dropdown-item" href="cancelledOrders.php">Cancelled Orders</a></li>
                         <li><a class="dropdown-item" href="rescheduledOrders.php">Rescheduled Orders</a></li>
@@ -26,20 +26,29 @@
 
                 <li class="nav-item"><a class="nav-link" href="supplier.php">Suppliers</a></li>
                 <li class="nav-item"><a class="nav-link" href="reportPage.php">Report</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Review</a></li>
+                <li class="nav-item"><a class="nav-link" href="viewCustomerReviews.php">Review</a></li>
 
                 <!-- Calendar Icon -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="calendar.php">
                         <img src="../images/calendar.png" alt="Calendar" class="calendar-img">
                     </a>
                 </li>
-                <!-- Bell icon -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <img src="../images/bell.png" alt="bell" class="calendar-img">
-                    </a>
-                </li>
+               <!-- Bell icon -->
+<li class="nav-item dropdown">
+    <a class="nav-link" href="#" id="notification-bell" role="button" data-bs-toggle="dropdown">
+        <img src="../images/bell.png" alt="bell" class="calendar-img">
+        <span id="notification-count" class="badge bg-danger" style="position: absolute; top: 5px; right: 5px; display: none;"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-custom" id="notification-dropdown" aria-labelledby="notification-bell">
+        <li class="dropdown-item">Loading...</li>
+    </ul>
+</li>
+
+<script src="notifications.js"></script>
+
+
+
 
                 <!-- Profile Dropdown -->
                 <li class="nav-item dropdown profile-container">

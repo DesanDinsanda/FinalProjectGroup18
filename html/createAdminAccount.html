@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account Form in HTML and CSS</title>
+    <link rel="stylesheet" href="../css/cre.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script>
+
+
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var number = document.getElementById("number").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            // First Name Validation
+            if (firstName.trim() == "") {
+                alert("Please enter your first name");
+                return false;
+            }
+
+            // Last Name Validation
+            if (lastName.trim() == "") {
+                alert("Please enter your last name");
+                return false;
+            }
+
+            // Email Validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.trim() == "") {
+                alert("Please enter your email");
+                return false;
+            } else if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            // Phone Number Validation
+            
+            if (number.trim() == "") {
+                alert("Please enter your phone number");
+                return false;
+            } else if (isNaN(number)) {
+                alert("Please enter a valid phone number");
+                return false;
+            }
+
+            // Password Validation
+            if (password.trim() == "") {
+                alert("Please enter your password");
+                return false;
+            }
+
+            // Confirm Password Validation
+            if (confirmPassword.trim() == "") {
+                alert("Please confirm your password");
+                return false;
+            } else if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            return true; // If all validations pass
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="Wrapper">
+        <form action="../php/addCustomer.php" method="POST" onsubmit="return validateForm()">
+
+            <h1>Create Account</h1>
+            <div class="input-box">
+                <input type="text" placeholder="First Name" name="firstName" id="firstName" >
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Last Name" name="lastName" id="lastName"  >
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email" name="email" id="email"  >
+                <i class="bx bx-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Phone Number" name="number"  id="number" >
+                <i class="bx bxs-phone"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" name="password" id="password"  >
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword"  >
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <button type="submit" class="btn" name="addCustomerBtn">Sign Up</button>
+        </form>
+    </div>
+</body>
+
+</html>
