@@ -1,5 +1,6 @@
 <?php
 include 'conf.php';
+
 class Orders {
     private $orderID;
     private $orderDate;
@@ -171,7 +172,7 @@ HTML;
                     <td>
                     <button class="btn btn-info" onclick="confirmAction({$row['orderID']}, 'accept')">Accept</button>&nbsp;
                     <button class="btn btn-danger" onclick="confirmAction({$row['orderID']}, 'reject')">Reject</button>
-                </td>
+                    </td>
                     
     
                     
@@ -316,9 +317,9 @@ HTML;
         $sql = "UPDATE orders SET status='RescheduleAccepted' WHERE orderID= '$this->orderID'";
     
         if (mysqli_query($this->conn, $sql)) {
-            echo "<script>alert('Rechedule Accepted!'); window.location='pendingOrders.php';</script>";
+            echo "<script>alert('Rechedule Accepted!'); window.location='rescheduledOrders.php';</script>";
         } else {
-            echo "<script>alert('Error Rescheduling order!'); window.location='pendingOrders.php';</script>";
+            echo "<script>alert('Error Rescheduling order!'); window.location='rescheduledOrders.php';</script>";
         }
     }
 
@@ -327,20 +328,105 @@ HTML;
         $sql = "UPDATE orders SET status='RescheduleRejected' WHERE orderID='$this->orderID'";
     
     if (mysqli_query($this->conn, $sql)) {
-        echo "<script>alert('Reschedule rejected!'); window.location='pendingOrders.php';</script>";
+        echo "<script>alert('Reschedule rejected!'); window.location='rescheduledOrders.php';</script>";
     } else {
-        echo "<script>alert('Error Reschedule order!'); window.location='pendingOrders.php';</script>";
+        echo "<script>alert('Error Reschedule order!'); window.location='rescheduledOrders.php';</script>";
     }
     }
     
-    public function viewOrderStatus() {}
-    public function cancelOrder() {}
     
-    public function reScheduleOrder() {}
+    public function viewOrderStatus() {
+        $email = $_SESSION['email'];
+        $sql = "SELECT 
+            o.orderID, 
+            o.orderDate, 
+            o.status, 
+            o.eventDate, 
+            o.eventTime, 
+            o.eventLocation,  
+            p.eventType, 
+            p.packageName, 
+            p.price,    
+            GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames
+        FROM orders o 
+        INNER JOIN user u ON o.customerID = u.ID
+        LEFT JOIN package p ON o.pre_define_packageID = p.packageID OR o.custom_packageID = p.packageID
+        LEFT JOIN custom_package_item cpi ON o.custom_packageID = cpi.custom_packageID OR o.pre_define_packageID = cpi.custom_packageID
+        LEFT JOIN item i ON cpi.itemID = i.itemID
+        WHERE u.email = '$email'
+        GROUP BY o.orderID";
     
-    public function addOrder() {}
-    public function deleteOrder() {}
-    public function updateOrder() {}
+        $result = mysqli_query($this->conn, $sql);
+    
+        echo '<div class="container my-4">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Event Date</th>
+                        <th>Event Time</th>
+                        <th>Event Location</th>
+                        <th>Event Type</th>
+                        <th>Package Name</th>
+                        <th>Cost</th>
+                        <th>Items</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>';
+    
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<tr>
+                    <td>' . $row['orderID'] . '</td>
+                    <td>' . $row['orderDate'] . '</td>
+                    <td>' . $row['status'] . '</td>
+                    <td>' . $row['eventDate'] . '</td>
+                    <td>' . $row['eventTime'] . '</td>
+                    <td>' . $row['eventLocation'] . '</td>
+                    <td>' . $row['eventType'] . '</td>
+                    <td>' . $row['packageName'] . '</td>
+                    <td>' . $row['price'] . '</td>
+                    <td>' . $row['itemNames'] . '</td>
+                    <td>
+                        <button class="btn btn-info" onclick="confirmAction(' . $row['orderID'] . ', \'cancel\')">Cancel</button>&nbsp;
+                        <button class="btn btn-danger" onclick="confirmAction(' . $row['orderID'] . ', \'reject\')">Reschedule</button>
+                    </td>
+                </tr>';
+            }
+        }
+    
+        echo '</tbody></table></div>';
+    }
+    
+    public function cancelOrder($orderID) {
+        $this->orderID = $orderID;
+        $sql = "UPDATE orders SET status='cancelled' WHERE orderID= '$this->orderID'";
+    
+        if (mysqli_query($this->conn, $sql)) {
+            echo "<script>alert('Order Cancelled!'); window.location='customerOrders.php';</script>";
+        } else {
+            echo "<script>alert('Error Rescheduling order!'); window.location='customerCancelOrder.php';</script>";
+        }
+    }
+    
+    public function reScheduleOrder($orderID,$eventLocation,$eventDate,$eventTime) {
+        $this->orderID = $orderID;
+        $this->eventLocation = $eventLocation;
+        $this->eventDate = $eventDate;
+        $this->eventTime = $eventTime;
+        $sql = "UPDATE orders SET status='reschedule', eventLocation ='$this->eventLocation', eventDate = '$this->eventDate' , eventTime = '$this->eventTime'   WHERE orderID= $this->orderID";
+    
+        if (mysqli_query($this->conn, $sql)) {
+            echo "<script>alert('Order Rescheduled!'); window.location='customerOrders.php';</script>";
+        } else {
+            echo "<script>alert('Error Rescheduling order!'); window.location='customerCancelOrder.php';</script>";
+        }
+    }
+    
+   
     public function selectEventType() {}
     public function selectOrder() {}
 }

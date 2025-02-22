@@ -35,7 +35,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="profileDropdown">
                         <li><a class="dropdown-item" href="adminProfile.php">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Create </a></li>
+                        <li><a class="dropdown-item" href="../html/createAdminAccount.html">Create </a></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </li>

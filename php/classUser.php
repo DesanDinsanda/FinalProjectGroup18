@@ -60,7 +60,7 @@ class User {
     if (mysqli_num_rows($customerResult) == 1) {
         session_start();
         $_SESSION['email'] = $email;  // Store session for customer
-        header("Location: ../html/create.html");
+        header("Location: customerHome.php");
         exit();
     }
 
@@ -109,7 +109,9 @@ class User {
         session_destroy();  // Destroy the session
 
         // Redirect to login page
-        header("Location: ../html/login.html");
+
+
+        header("Location: customerHome.php");
 exit();
     }
 

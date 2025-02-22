@@ -1,0 +1,70 @@
+body {
+    background-color: #d8dbce;
+}
+
+.terms-title {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.custom-card {
+    margin-top: 20px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section-image {
+    max-width: 150px;
+    margin-left: 20px;
+}
+
+
+footer h5 {
+    font-weight: bold;
+    color: black;
+}
+
+/* Clickable Links */
+.footer-link {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-link:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    background: black;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    footer .text-md-start {
+        text-align: center !important;
+    }
+    
+    footer .list-inline {
+        justify-content: center;
+    }
+}

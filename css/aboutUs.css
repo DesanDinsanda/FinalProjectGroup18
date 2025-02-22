@@ -1,0 +1,246 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: rgb(249, 234, 234);
+    color: white;
+}
+
+.navbar {
+    background-color: rgb(240, 230, 200) !important;
+}
+
+.navbar-brand img {
+    border-radius: 10px;
+}
+
+.navbar-nav .nav-link {
+    font-size: large;
+    font-weight: 500;
+    color: #100303;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #3010ce;
+}
+
+.btn-dark {
+    background-color: #2c1e1e;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: white;
+}
+
+.btn-outline-dark {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 15px;
+}
+
+
+
+
+
+.Aboutus {
+    background: #fdecf6;
+    margin-top: 80px;
+    padding: 40px 0;
+}
+
+.Aboutus .col-12 {
+    padding: 50px;
+}
+
+h1 {
+    color: #100303;
+    margin-bottom: 5%;
+    margin-left: 20%;
+}
+
+small {
+    color: #282525;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: inherit;
+    font-size: larger;
+    font-style: italic;
+    margin-left: 10%;
+}
+
+/* Image styling for responsiveness */
+.Aboutus-img {
+    width: 80%;
+    max-width: 700px;
+    height: auto;
+    margin-left: 10%;
+    margin-bottom: 20%;
+}
+
+
+
+
+
+
+
+
+.about-us {
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+}
+
+.about-us img {
+    width: 500px;
+    height: 600px;
+    border: 2px solid white;
+}
+
+.lead {
+    padding-top: 20px;
+}
+
+.end {
+    padding: 20px 0;
+}
+
+.col-md-3 {
+    display: inline-block;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 40px;
+}
+
+.process-step {
+    text-align: center;
+    padding: 20px;
+}
+
+.process-step .icon {
+    width: 80px;
+    height: 80px;
+    background-color: #434040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    border: 2px solid #ff3269;
+}
+
+.process-step img {
+    width: 50%;
+    filter: invert(1);
+}
+
+.process-step h5 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #100303;
+}
+
+.text-center h6 {
+    color: #100303;
+}
+
+.text-center h2 {
+    color: #100303;
+}
+
+
+
+footer {
+    background: #f69d3e42;
+    padding-top: 50px;
+    margin-top: 3%;
+}
+
+.footer-content {
+    margin-bottom: 20px;
+}
+
+.footer-content h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #100303;
+}
+
+.footer-content p,
+.footer-content ul {
+    text-align: center;
+}
+
+.footer-content p {
+    width: 190px;
+    margin: auto;
+    padding: 7px;
+    color: #100303;
+}
+
+.list {
+    padding: 0;
+}
+
+.list li {
+    width: auto;
+    text-align: center;
+    list-style-type: none;
+    padding: 7px;
+    position: relative;
+}
+
+.list li::before {
+    content: '';
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background: #2c1e13;
+    transition-duration: .5s;
+}
+
+.list li:hover::before {
+    width: 70px;
+}
+
+.social-icons {
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    padding: 5px;
+}
+
+.social-icons i {
+    color: rgb(35, 5, 140);
+    font-size: 25px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(9, 8, 8);
+}
+
+.social-icons i:hover {
+    color: rgb(180, 119, 119);
+}
+
+.bottom-bar {
+    background: #f9e9b1;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+
+}
+
+.bottom-bar p {
+    color: black;
+    margin: 0;
+    font-size: 16px;
+    padding: 7px;
+}
