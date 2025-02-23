@@ -7,12 +7,16 @@ $sql = "SELECT s.supplierID, s.firstName, s.lastName, s.email, s.province, s.cit
         LEFT JOIN supplier_telno t ON s.supplierID = t.supplierID";
 
 $result = mysqli_query($conn, $sql);
+include "adminNavbar.php";
 
 echo '
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 
     <style>
     .form-container {
@@ -31,7 +35,7 @@ echo '
 </head>
 <body>
 
-
+    <br><br><br><br><br>
 
     <h2 class="mb-4 text-center">Manage Suppliers</h2>
     <form action="addSupplier.php" method="POST" enctype="multipart/form-data" class="border rounded p-4 w-50 mx-auto form-container">

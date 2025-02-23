@@ -11,6 +11,8 @@ $sql = "SELECT p.packageID, p.packageName, p.price, p.eventType, p.discount,
 
 $result = mysqli_query($conn, $sql);
 
+include "adminNavbar.php";
+
 echo '
 <html>
 <head>
@@ -37,7 +39,7 @@ echo '
 </head>
 <body>
 
-    <?php  include 'adminNavbar.php'?>
+    <?php  include "adminNavbar.php"?>
     <br><br><br><br><br><br>
 
 

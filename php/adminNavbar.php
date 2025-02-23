@@ -8,7 +8,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="#">Users</a></li>
+                <li class="nav-item"><a class="nav-link active" href="adminHome.php">Users</a></li>
                 
                 <!-- Package Dropdown -->
                 <li class="nav-item dropdown">
