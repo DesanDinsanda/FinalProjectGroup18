@@ -175,7 +175,45 @@ echo <<<HTML
 HTML;
     }
 
-    public function deleteAccount() {}
+    public function deleteAccount($id) {
+        session_start();
+
+        $reviewDeleteQuery = "DELETE FROM review WHERE customerID = $id ";
+        $user_telnoDeleteQuery = "DELETE FROM user_telno WHERE ID = $id ";
+        $orderDeleteQuery = "DELETE FROM orders WHERE customerID = $id ";
+        $customerDeleteQuery = "DELETE FROM customer WHERE ID = $id ";
+        $userDeleteQuery = "DELETE FROM user WHERE ID = $id ";
+
+        if(mysqli_query($this->conn, $reviewDeleteQuery)){
+
+        }
+        if(mysqli_query($this->conn, $orderDeleteQuery)){
+
+        }
+
+        if (mysqli_query($this->conn, $user_telnoDeleteQuery)) {
+
+            if (mysqli_query($this->conn, $customerDeleteQuery)) {
+        
+                mysqli_query($this->conn, $userDeleteQuery);
+                    
+        
+            } else {
+                echo "Error deleting customer: " . mysqli_error($this->conn);
+            }
+        
+        } else {
+            echo "Error deleting user_telno (required): " . mysqli_error($this->conn);
+        }
+
+        session_unset();  // Unset all session variables
+        session_destroy();
+
+        header("Location: customerHome.php");
+
+    }
+
+
     public function contactCustomer() {}
     
 

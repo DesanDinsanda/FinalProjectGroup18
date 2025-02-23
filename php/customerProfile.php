@@ -38,11 +38,25 @@ if (isset($_POST['updateProfile2'])) {
     if($user2->updateAccount($firstName, $lastName, $email, $pass, $number,$ID)  ){
         echo "<script>alert('Updated succesfully!'); window.location='customerProfile.php';</script>";
       }else {
-          echo "<script>alert('There is an Error'); window.location='customerProfile.php';</script>";
+          echo "<script>alert('There is an Error on updating profile'); window.location='customerProfile.php';</script>";
         }
        
 
+}else if (isset($_POST['deleteBtn'])) {
+
+  $ID = $_POST['id'];
+
+  include 'conf.php';
+  include 'classCustomer.php';
+  $customer = new Customer($conn);
+
+  
+
+  $customer->deleteAccount($ID);
+     
+
 }
+
 
 ?>
 
@@ -135,6 +149,15 @@ if (isset($_POST['updateProfile2'])) {
         <input type="password" id="passwords" name="password" value="<?php echo $userData['password']; ?>" required>
       </div>
       <div class="btn-group">
+
+      <script>
+      function confirmDelete() {
+      return confirm("Are you sure you want to delete your account?");
+      }
+      </script>
+
+       
+      <button type="submit" class="btn btn-cancel" name="deleteBtn" onclick="confirmDelete()">Delete Account</button>
         <button type="button" class="btn btn-cancel" onclick="window.location.href='customerHome.php'">Cancel</button>
         <button type="submit" class="btn btn-save" name="updateProfile2">Update</button>
       </div>

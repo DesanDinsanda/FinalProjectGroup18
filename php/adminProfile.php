@@ -42,6 +42,19 @@ if (isset($_POST['updateProfile2'])) {
         }
        
 
+}else if (isset($_POST['deleteBtn'])) {
+
+  $ID = $_POST['id'];
+
+  include 'conf.php';
+  include 'classAdmin.php';
+  $admin = new Admin($conn);
+
+  
+
+  $admin->deleteAdminAccount($ID);
+     
+
 }
 
 ?>
@@ -135,6 +148,15 @@ if (isset($_POST['updateProfile2'])) {
         <input type="password" id="passwords" name="password" value="<?php echo $userData['password']; ?>" required>
       </div>
       <div class="btn-group">
+
+      <script>
+      function confirmDelete() {
+      return confirm("Are you sure you want to delete your account?");
+      }
+      </script>
+
+       
+      <button type="submit" class="btn btn-cancel" name="deleteBtn" onclick="confirmDelete()">Delete Account</button>
         <button type="button" class="btn btn-cancel" onclick="window.location.href='adminHome.php'">Cancel</button>
         <button type="submit" class="btn btn-save" name="updateProfile2">Update</button>
       </div>

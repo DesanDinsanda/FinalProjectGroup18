@@ -36,7 +36,25 @@ class Admin extends User {
         }
     }
 
-    public function deleteAdminAccount() {}
+    public function deleteAdminAccount($id) {
+       
+
+        $user_telnoDeleteQuery = "DELETE FROM user_telno WHERE ID = $id ";
+        $adminDeleteQuery = "DELETE FROM admin WHERE ID = $id ";
+        $userDeleteQuery = "DELETE FROM user WHERE ID = $id ";
+
+        if(mysqli_query($this->conn, $user_telnoDeleteQuery) && mysqli_query($this->conn, $adminDeleteQuery)){
+            mysqli_query($this->conn, $userDeleteQuery);
+        }
+        
+
+        session_unset();  
+        session_destroy();
+
+        header("Location: customerHome.php");
+
+    }
+
     public function selectType() {}
     public function viewAccount() {}
 }

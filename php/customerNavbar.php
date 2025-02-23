@@ -12,7 +12,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="customerHome.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="aboutUs.php">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="ser.php">Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="service.php">Service</a></li>
                 <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="mailto:dreamsevent@gmail.com">Contact Us</a></li>
                 
@@ -23,6 +23,20 @@
                     </a>
                 </li>
             </ul>
+
+            <!-- Bell icon -->
+            <li class="nav-item dropdown">
+    <a class="nav-link" href="#" id="notification-bell" role="button" data-bs-toggle="dropdown">
+        <img src="../images/bell.png" alt="bell" class="calendar-img">
+        <span id="notification-count" class="badge bg-danger" style="position: absolute; top: 5px; right: 5px; display: none;"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-custom" id="notification-dropdown" aria-labelledby="notification-bell">
+        <li class="dropdown-item">Loading...</li>
+    </ul>
+        </li>
+
+    <script src="customerNotification.js"></script>
+
 
             <div class="ms-3">
                 <?php if (!isset($_SESSION['email'])): ?>

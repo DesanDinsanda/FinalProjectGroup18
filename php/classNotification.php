@@ -37,9 +37,32 @@ class Notification {
         echo json_encode($notifications);
     }
 
-    public function receiveRejectionNotification() {}
-    public function receiveAcceptanceNotification() {}
-    public function receiveRescheduleAcceptanceNotification() {}
-    public function receiveRescheduleRejectionNotification() {}
+
+    public function viewCustomerNotification() {
+        $email = $_SESSION['email'];
+        $sql = "SELECT o.orderID, o.status, o.eventDate, o.eventLocation 
+                FROM orders o 
+                INNER JOIN user u ON o.customerID = u.ID
+                WHERE o.status IN ('accepted', 'rejected', 'rescheduleAccepted', 'rescheduleRejected') 
+                AND u.email = '$email'
+                ORDER BY o.orderDate DESC";
+    
+        $result = $this->conn->query($sql);
+        $notifications = [];
+    
+        while ($row = $result->fetch_assoc()) {
+            $link = "customerOrders.php"; // All statuses go to the same page
+    
+            $notifications[] = [
+                'orderID' => $row['orderID'],
+                'status' => ucfirst($row['status']),
+                'eventDate' => $row['eventDate'],
+                'link' => $link
+            ];
+        }
+    
+        echo json_encode($notifications);
+    }
+    
 }
 ?>
