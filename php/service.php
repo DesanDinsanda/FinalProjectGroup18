@@ -167,7 +167,7 @@
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-3 text-center">
-                    <button class="btn btn-success order-btn">ORDER NOW</button>
+                    <button class="btn btn-success order-btn" onclick="window.location.href='weddingPackage.php'">ORDER NOW</button>
                 </div>
             </div>
 
@@ -220,7 +220,7 @@
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-3 text-center">
-                    <button class="btn btn-success order-btn">ORDER NOW</button>
+                    <button class="btn btn-success order-btn" onclick="window.location.href='birthdayPackage.php'" >ORDER NOW</button>
                 </div>
             </div>
 
@@ -273,7 +273,7 @@
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-3 text-center">
-                    <button class="btn btn-success order-btn">ORDER NOW</button>
+                    <button class="btn btn-success order-btn" onclick="window.location.href='awardCeramonyPackage.php'" >ORDER NOW</button>
                 </div>
             </div>
 

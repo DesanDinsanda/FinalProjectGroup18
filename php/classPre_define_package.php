@@ -233,7 +233,7 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
                         <input type="hidden" name="package_name" value="' . htmlspecialchars($this->packageName) . '">
                         <input type="hidden" name="package_price" value="' . htmlspecialchars($this->price) . '">
                         <input type="hidden" name="packageID" value="' . htmlspecialchars($this->packageID) . '">
-                        <button type="submit" name="addCart" class="btn btn-primary btn-hover">Add to Cart</button>
+                        <button type="submit" name="addCart" class="btn btn-primary btn-hover">Order</button>
                     </form>';
                 echo '</div>'; // Close card-footer
                 echo '</div>'; // Close card

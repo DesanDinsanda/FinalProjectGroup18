@@ -14,9 +14,13 @@ $itemEventType = "Birthday"; // Change dynamically if needed
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Package</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/customerHome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    
     <style>
         body { background-color: #fcf6ec; }
         .card-hover { border-radius: 15px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -56,6 +60,8 @@ $itemEventType = "Birthday"; // Change dynamically if needed
 
 </head>
 <body>
+<?php include 'customerNavbar.php' ?>
+<br><br><br><br><br>
     <h2 class="text-center mt-4">Custom Package for <?php echo $itemEventType; ?></h2>
 
     <?php
@@ -67,5 +73,6 @@ $itemEventType = "Birthday"; // Change dynamically if needed
         <button type="button" class="btn btn-primary btn-hover" onclick="window.location.href='viewItemsInCustomPackage.php'">View Custom Package</button>
     </div>
 
+    <?php include 'footer.php'  ?>
 </body>
 </html>

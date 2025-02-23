@@ -18,7 +18,7 @@
                 
                 <!-- Cart Icon -->
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">
+                    <a class="nav-link" href="viewItemsInCustomPackage.php">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </li>

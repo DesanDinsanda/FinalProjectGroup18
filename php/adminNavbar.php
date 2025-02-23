@@ -16,14 +16,14 @@
                         Packages
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="ordersDropdown">
-                        <li><a class="dropdown-item" href="#">Predefine Package</a></li>
-                        <li><a class="dropdown-item" href="#">Custom Package</a></li>
+                        <li><a class="dropdown-item" href="formAdd_P_Package.php">Predefine Package</a></li>
+                        <li><a class="dropdown-item" href="cartItems.php">Custom Package</a></li>
                         
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="#">Items</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Suppliers</a></li>
+                <li class="nav-item"><a class="nav-link" href="formAddItems.php">Items</a></li>
+                <li class="nav-item"><a class="nav-link" href="formAddSuppliers.php">Suppliers</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
 
                
