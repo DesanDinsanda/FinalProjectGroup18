@@ -45,7 +45,7 @@
     </ul>
 </li>
 
-<script src="notifications.js"></script>
+<script src="../javascript/notifications.js"></script>
 
 
 

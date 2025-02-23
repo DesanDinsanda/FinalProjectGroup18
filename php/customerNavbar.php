@@ -35,7 +35,7 @@
     </ul>
         </li>
 
-    <script src="customerNotification.js"></script>
+    <script src="../javascript/customerNotification.js"></script>
 
 
             <div class="ms-3">
