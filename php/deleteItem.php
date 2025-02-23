@@ -7,7 +7,7 @@ if (isset($_GET['itemID'])) {
     $item_id = $_GET['itemID'];
 
     // Create an instance of the Item class
-    $item = new Item($conn);
+    $item = new Items($conn);
 
     // Call the deleteItem method to delete the item
     $message = $item->deleteItem($item_id);

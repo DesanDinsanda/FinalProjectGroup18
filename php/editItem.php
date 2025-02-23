@@ -9,7 +9,7 @@ $supplier_result = mysqli_query($conn, $supplier_sql);
 if (isset($_GET['itemID'])) {
     // Get item details
     $itemID = $_GET['itemID'];
-    $item = new Item($conn);
+    $item = new Items($conn);
     $itemDetails = $item->getItemDetails($itemID);
 
     if (!$itemDetails) {
