@@ -429,7 +429,7 @@ HTML;
    
     public function orderPreDefinePackage($customerID, $location, $eventDate, $eventTime, $packageID) {
         $orderDate = date('Y-m-d'); // Get current date
-        $status = 'Pending'; // Default order status
+        $status = 'pending'; // Default order status
 
         // SQL query to insert order details
         $sql = "INSERT INTO orders (orderDate, status, eventDate, eventTime, eventLocation, pre_define_packageID, customerID) 
@@ -470,7 +470,7 @@ HTML;
         }
 
         $orderDate = date('Y-m-d'); // Current date
-        $status = 'Pending';
+        $status = 'pending';
 
         // Calculate the total price of the custom package
         $totalPrice = 0;

@@ -59,13 +59,16 @@ class CustomPackage extends Package {
                                     <input type="hidden" name="eventType" value="' . $itemEventType . '">
                                     <button type="submit" name="addItemsToCustomPackage" class="btn btn-primary btn-hover mt-2" onclick="updateHiddenQuantity(' . $row['itemID'] . ')">Add to Cart</button>
                                 </form>
+                                <br>
                                 <!-- Add to Favourites Button -->
                             <form method="post" action="addItemsToFavourite.php">
                                 <input type="hidden" name="itemID" value="' . $row['itemID'] . '">
                                 <input type="hidden" name="itemName" value="' . $row['itemName'] . '">
                                 <input type="hidden" name="itemPrice" value="' . $row['itemPrice'] . '">
                                 <input type="hidden" name="itemPhoto" value="' . $row['itemPhoto'] . '">
-                                <button type="submit" name="addItemsToFavourite" class="btn btn-primary">Add to Favourites</button>
+                                <button type="submit" name="addItemsToFavourite" class="btn btn-danger fw-bold px-4 py-2 rounded-pill">
+                                    <i class="fa fa-heart me-2"></i> Add to Favourites
+                                </button>
                             </form>
 
                             </div>
