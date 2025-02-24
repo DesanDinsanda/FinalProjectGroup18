@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../css/customerHome.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
 
 body {
@@ -58,6 +60,61 @@ body {
             box-shadow: 0 6px 15px rgba(255, 118, 136, 0.5);
         }
 
+
+        /* Comment Box Styling */
+.comment-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* User Profile Icon */
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Comment Input */
+#reviewText {
+    flex-grow: 1;
+    height: 40px;
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#reviewText:focus {
+    border-color: #007bff;
+}
+
+/* Comment Button */
+.comment-btn {
+    display: block;
+    margin-left: auto;
+    background-color: #007bff;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.comment-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Individual Comment */
+.comment {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+
     </style>
     <link rel="stylesheet" href="../css/customerHome.css">
 
@@ -83,6 +140,59 @@ body {
     <div class="card-container">
         <?php include 'fetchAwardCeremonyDetails.php'; ?>
     </div>
+
+    <?php
+include 'conf.php';
+
+$sql = "SELECT r.reviewID, r.reviewDiscription, r.reviewDate, u.firstName, u.lastName 
+        FROM review r 
+        JOIN user u ON r.customerID = u.ID 
+        ORDER BY r.reviewDate DESC";
+$result = $conn->query($sql);
+?>
+
+<div class="container mt-4">
+    <div class="comment-box p-4">
+        <h5><?php echo $result->num_rows; ?> Comments</h5>
+        <div class="mb-3 d-flex align-items-center">
+            
+            <textarea id="reviewText" class="form-control" placeholder="Add a comment..."></textarea>
+        </div>
+        <button class="btn btn-primary comment-btn" id="addReviewBtn">Comment</button>
+
+        <div id="reviewSection" class="mt-4">
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="comment">
+                    <div class="d-flex align-items-center">
+                        
+                        <div>
+                            <strong>@<?php echo htmlspecialchars($row['firstName'] . " " . $row['lastName']); ?></strong> 
+                            <span class="text-muted small"> <?php echo date("Y-m-d", strtotime($row['reviewDate'])); ?> </span>
+                        </div>
+                    </div>
+                    <p class="mt-2"><?php echo htmlspecialchars($row['reviewDiscription']); ?></p>
+                </div>
+            <?php endwhile; ?>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function () {
+    $("#addReviewBtn").click(function () {
+        let reviewText = $("#reviewText").val().trim();
+        if (reviewText === "") {
+            alert("Please enter a review!");
+            return;
+        }
+
+        $.post("addReview.php", { review: reviewText }, function (response) {
+            alert(response);
+            location.reload(); 
+        });
+    });
+});
+</script>
 
     <?php include 'footer.php'  ?>
 </body>

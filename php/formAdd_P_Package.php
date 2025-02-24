@@ -3,10 +3,11 @@ include "conf.php";
 
 // SQL query to get package and associated items
 $sql = "SELECT p.packageID, p.packageName, p.price, p.eventType, p.discount,
-               GROUP_CONCAT(i.itemName ORDER BY pi.itemID) AS items
-        FROM package p
+       GROUP_CONCAT(i.itemName ORDER BY i.itemID SEPARATOR ', ') AS items
+        FROM package p 
         LEFT JOIN pre_define_package_item pi ON p.packageID = pi.pre_define_packageID
         LEFT JOIN item i ON pi.itemID = i.itemID
+        WHERE p.packageName != 'custom Package' 
         GROUP BY p.packageID";
 
 $result = mysqli_query($conn, $sql);

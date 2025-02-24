@@ -24,7 +24,7 @@
 
                 <li class="nav-item"><a class="nav-link" href="formAddItems.php">Items</a></li>
                 <li class="nav-item"><a class="nav-link" href="formAddSuppliers.php">Suppliers</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="formAddFAQ.php">FAQ</a></li>
 
                
 

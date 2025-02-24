@@ -214,6 +214,35 @@ HTML;
     }
 
 
+    public function updateCustomerAccount($firstName, $lastName, $email, $password, $number,$ID,$dob, $province, $city, $streetName) {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
+        $this->password = $password;
+        $this->number = $number;
+        $this->id = $ID;
+        $this->dob = $dob;
+        $this->province = $province;
+        $this->city = $city;
+        $this->streetName = $streetName;
+        $sql = "UPDATE user SET firstName = '$this->firstName', lastName = '$this->lastName', email = '$this->email', password = '$this->password' WHERE email = '$this->email' ";
+        $result = mysqli_query($this->conn, $sql);
+    
+    
+        $sql2 = "UPDATE user_telno SET telNO = '$this->number' WHERE ID = '$this->id' ";
+        $result2 = mysqli_query($this->conn, $sql2);
+
+        $sql3 = "UPDATE customer SET dob = '$this->dob', province = '$this->province', city = '$this->city', streetName = '$this->streetName'  WHERE ID = '$this->id' ";
+        $result3 = mysqli_query($this->conn, $sql3);
+    
+        if($result == true && $result2 == true && $result3 == true ) {
+            return true;
+        }else{
+            return false;
+        }
+    
+    }
+
     public function contactCustomer() {}
     
 
