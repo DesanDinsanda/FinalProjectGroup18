@@ -462,5 +462,94 @@ HTML;
         }
     }
 
+
+
+    public function orderCustomPackage($customerID, $location, $eventDate, $eventTime, $cart) {
+        if (!isset($cart) || count($cart) === 0) {
+            die("Error: No items in the custom package.");
+        }
+
+        $orderDate = date('Y-m-d'); // Current date
+        $status = 'Pending';
+
+        // Calculate the total price of the custom package
+        $totalPrice = 0;
+        foreach ($cart as $item) {
+            $totalPrice += $item['itemPrice'] * $item['quantity'];
+        }
+
+        // Get the event type from the first item in the cart
+        $firstItemID = $cart[0]['itemID']; // Get first item ID
+
+        $sql = "SELECT itemEventType FROM item WHERE itemID = '$firstItemID'"; // Fetch event type
+        $result = mysqli_query($this->conn, $sql);
+
+        if ($row = mysqli_fetch_assoc($result)) {
+            $eventType = $row['itemEventType']; 
+        } else {
+            die("Error: Event type not found.");
+        }
+
+        $packageName = 'Custom Package'; // Default name
+        $discount = 0; // No discount for custom packages
+
+        // Insert package details
+        $sqlPackage = "INSERT INTO package (eventType, packageName, price, discount) 
+                       VALUES ('$eventType', '$packageName', '$totalPrice', '$discount')";
+
+        if (mysqli_query($this->conn, $sqlPackage)) {
+            $packageID = mysqli_insert_id($this->conn); // Get the ID of the inserted package
+
+            // Insert the packageID into `custom_package` table
+            $sqlCustomPackage = "INSERT INTO custom_package (packageID) VALUES ('$packageID')";
+            mysqli_query($this->conn, $sqlCustomPackage);
+
+            // Insert order into `orders` table
+            $sqlOrder = "INSERT INTO orders (orderDate, status, eventDate, eventTime, eventLocation, customerID, custom_packageID) 
+                         VALUES ('$orderDate', '$status', '$eventDate', '$eventTime', '$location', '$customerID', '$packageID')";
+
+            if (mysqli_query($this->conn, $sqlOrder)) {
+                // Insert selected items into `custom_package_item` table
+                foreach ($cart as $item) {
+                    $itemID = $item['itemID'];
+                    $quantity = $item['quantity'];
+                    $orderedDate = date("Y-m-d"); // Get today's date
+
+                    $sqlItem = "INSERT INTO custom_package_item (custom_packageID, itemID, amount, orderedDate)
+                                VALUES ('$packageID', '$itemID', '$quantity', '$orderedDate')";
+                    mysqli_query($this->conn, $sqlItem);
+                }
+
+                // Clear cart after successful order
+                unset($_SESSION['cart']);
+
+                // Order confirmation modal
+                echo "<script>
+                window.onload = function() {
+                    var confirmationModal = document.getElementById('confirmationModal');
+                    confirmationModal.style.display = 'block';
+
+                    document.getElementById('orderNowBtn').onclick = function() {
+                        window.location.href = 'service.php';
+                    };
+                };
+            </script>
+            
+            <!-- Custom Modal for Confirmation -->
+            <div id='confirmationModal' style='display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background:ivory; display: flex; justify-content: center; align-items: center; z-index: 1000;'>
+                <div style='background-color: white; padding: 20px; border-radius: 8px; text-align: center;'>
+                    <h4>Order Placed Successfully!</h4>
+                    <p>Thank you for choosing us </p>
+                    <button id='orderNowBtn' style='padding: 10px 20px; margin: 10px; background-color: green; color: white; border: none; border-radius: 5px;'>Go to services</button>
+                </div>
+            </div>";
+            } else {
+                echo "Error inserting into orders: " . mysqli_error($this->conn);
+            }
+        } else {
+            echo "Error inserting into package: " . mysqli_error($this->conn);
+        }
+    }
+
 }
 ?>

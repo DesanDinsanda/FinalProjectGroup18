@@ -157,7 +157,14 @@ class CustomPackage extends Package {
     
         echo "</tbody></table>";
         echo "<h4 class='text-end'>Grand Total: RS $grandTotal</h4>";
-        echo "<div class='text-center mt-4'><a href='deleteCustomPackage.php' class='btn btn-danger btn-lg'>Delete Custom Package</a></div>";
+        
+        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+            echo "<div class='text-center mt-4'>
+                    <a href='orderC.php' class='btn btn-primary btn-lg'>Order Custom Package</a>
+                    <a href='deleteCustomPackage.php' class='btn btn-danger btn-lg'>Delete Custom Package</a>
+                  </div>";
+        }
+    
         echo "</div>";
     }
     
