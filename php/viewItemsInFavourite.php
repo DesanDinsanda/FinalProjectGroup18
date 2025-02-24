@@ -22,15 +22,28 @@
 <br><br><br><br><br>
 
 <?php
-// remove the session
-// session_start();
+session_start();
 include 'conf.php';
 include 'classPackage.php';
 include "classCustom_package.php";
 
-$customPackage = new CustomPackage($conn);
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: ../html/login.html"); // Redirect to login page
+    exit();
+}
 
-// Call the method to display the favourite items
+// Get customer ID
+$sql = "SELECT ID FROM user WHERE email = '".$_SESSION['email']."'";
+$result = mysqli_query($conn, $sql);
+
+if ($row = mysqli_fetch_assoc($result)) {
+    $customerID = $row['ID'];
+} else {
+    die("Error: Customer not found.");
+}
+
+$customPackage = new CustomPackage($conn);
 $customPackage->viewItemsInFavourite();
 ?>
 
