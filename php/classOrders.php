@@ -427,7 +427,40 @@ HTML;
     }
     
    
-    public function selectEventType() {}
-    public function selectOrder() {}
+    public function orderPreDefinePackage($customerID, $location, $eventDate, $eventTime, $packageID) {
+        $orderDate = date('Y-m-d'); // Get current date
+        $status = 'Pending'; // Default order status
+
+        // SQL query to insert order details
+        $sql = "INSERT INTO orders (orderDate, status, eventDate, eventTime, eventLocation, pre_define_packageID, customerID) 
+                VALUES ('$orderDate', '$status', '$eventDate', '$eventTime', '$location', '$packageID', '$customerID')";
+
+        if (mysqli_query($this->conn, $sql)) {
+            echo "
+            <script>
+                window.onload = function() {
+                    var confirmationModal = document.getElementById('confirmationModal');
+                    confirmationModal.style.display = 'block';
+
+                    document.getElementById('orderNowBtn').onclick = function() {
+                        window.location.href = 'service.php';
+                    };
+                };
+            </script>
+            
+            <!-- Custom Modal for Confirmation -->
+            <div id='confirmationModal' style='display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background:ivory; display: flex; justify-content: center; align-items: center; z-index: 1000;'>
+                <div style='background-color: white; padding: 20px; border-radius: 8px; text-align: center;'>
+                    <h4>Order Placed Successfully!</h4>
+                    <p>Thank you for choosing us </p>
+                    <button id='orderNowBtn' style='padding: 10px 20px; margin: 10px; background-color: green; color: white; border: none; border-radius: 5px;'>Go to services</button>
+                </div>
+            </div>";
+
+        } else {
+            echo "Error: " . mysqli_error($this->conn);
+        }
+    }
+
 }
 ?>

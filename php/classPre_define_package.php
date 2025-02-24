@@ -229,7 +229,7 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
 
                 // Add to Cart Button
                 echo '<div class="card-footer text-center">';
-                echo '<form action="add_to_cart.php" method="post">
+                echo '<form action="orderP.php" method="post">
                         <input type="hidden" name="package_name" value="' . htmlspecialchars($this->packageName) . '">
                         <input type="hidden" name="package_price" value="' . htmlspecialchars($this->price) . '">
                         <input type="hidden" name="packageID" value="' . htmlspecialchars($this->packageID) . '">
