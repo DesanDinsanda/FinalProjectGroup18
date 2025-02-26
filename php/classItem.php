@@ -31,7 +31,8 @@ class Items {
 
 
     public function viewInventoryLevel() {
-        $sql = "SELECT itemID, itemName, itemPrice, itemStock, itemSource FROM item ";
+        $sql = "SELECT itemID, itemName, itemPrice, itemStock, itemSource FROM item WHERE itemSource IN ('Supplied', 'Company')";
+
         $result = mysqli_query($this->conn, $sql);
         echo <<<HTML
 

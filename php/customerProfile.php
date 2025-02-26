@@ -66,7 +66,7 @@ if (isset($_POST['updateProfile2'])) {
 
     body {
         font-family: Arial, sans-serif;
-        background-color: rgb(240, 230, 200);
+        background-color: rgb(255, 255, 224);
         display: flex;
         justify-content: center;
         align-items: center;

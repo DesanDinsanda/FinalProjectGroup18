@@ -63,13 +63,13 @@ class Report {
             $query = "SELECT 
     i.itemID, 
     i.itemName, 
-    i.itemPrice, 
+    i.itemPrice,
+    i.itemSource,
     COUNT(cpi.itemID) AS timesUsed
             FROM item i
-            LEFT JOIN custom_package_item cpi ON i.itemID = cpi.itemID
-            GROUP BY i.itemID, i.itemName, i.itemPrice
-            ORDER BY timesUsed DESC;
-            ";
+            LEFT JOIN custom_package_item cpi ON i.itemID = cpi.itemID WHERE itemSource IN ('Supplied', 'Company')
+            GROUP BY i.itemID, i.itemName, i.itemPrice 
+            ORDER BY timesUsed DESC ";
             
             break;
 

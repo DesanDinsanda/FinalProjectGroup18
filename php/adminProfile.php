@@ -156,7 +156,7 @@ if (isset($_POST['updateProfile2'])) {
       </script>
 
        
-      <button type="submit" class="btn btn-cancel" name="deleteBtn" onclick="confirmDelete()">Delete Account</button>
+      <button type="submit" class="btn btn-cancel" name="deleteBtn" onclick="return confirmDelete()">Delete Account</button>
         <button type="button" class="btn btn-cancel" onclick="window.location.href='adminHome.php'">Cancel</button>
         <button type="submit" class="btn btn-save" name="updateProfile2">Update</button>
       </div>

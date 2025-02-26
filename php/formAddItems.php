@@ -2,7 +2,7 @@
 include "conf.php";
 
 // SQL query to get items
-$sql = "SELECT * FROM item";
+$sql = "SELECT * FROM item WHERE itemSource IN ('Supplied', 'Company')";
 $result = mysqli_query($conn, $sql);
 
 // SQL query to get supplier emails

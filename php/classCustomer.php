@@ -62,10 +62,12 @@ class Customer extends User {
 
     //Method to View customers
     public function viewCustomer() {
-        $sql = "SELECT u.ID, u.firstName,u.lastName, u.email,   ut.telNO,   o.orderID 
-        FROM user u INNER JOIN user_telno ut ON u.ID = ut.ID
-                    INNER JOIN customer c ON u.ID = c.ID 
-                    INNER JOIN orders o ON u.ID = o.customerID";
+        $sql = "SELECT u.ID, u.firstName, u.lastName, u.email, ut.telNO, MIN(o.orderID) AS orderID
+                FROM user u
+                INNER JOIN user_telno ut ON u.ID = ut.ID
+                INNER JOIN customer c ON u.ID = c.ID
+                INNER JOIN orders o ON u.ID = o.customerID
+                GROUP BY u.ID, u.firstName, u.lastName, u.email, ut.telNO;";
         $result = mysqli_query($this->conn, $sql);
         echo <<<HTML
 

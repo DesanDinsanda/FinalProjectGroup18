@@ -4,13 +4,15 @@ class Package {
     protected $packageName;
     protected $price;
     protected $eventType;
+    protected $discount;
 
     // Constructor
-    public function __construct($packageID, $packageName, $price, $eventType) {
+    public function __construct($packageID, $packageName, $price, $eventType, $discount) {
         $this->packageID = $packageID;
         $this->packageName = $packageName;
         $this->price = $price;
         $this->eventType = $eventType;
+        $this->discount = $discount;
     }
 
     // Getters and Setters
@@ -44,6 +46,14 @@ class Package {
 
     public function setEventType($eventType) {
         $this->eventType = $eventType;
+    }
+
+    public function getDiscount() {
+        return $this->discount;
+    }
+
+    public function setDiscount($discount) {
+        $this->discount = $discount;
     }
 }
 ?>

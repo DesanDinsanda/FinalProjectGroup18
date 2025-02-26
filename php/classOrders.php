@@ -140,14 +140,16 @@ HTML;
         p.price,   
         u.firstName, 
         ut.telNO, 
-        GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames  -- Combine multiple items in one row
-            FROM orders o 
-            INNER JOIN user u ON o.customerID = u.ID
-            INNER JOIN user_telno ut ON o.customerID = ut.ID
-            LEFT JOIN package p ON o.pre_define_packageID = p.packageID OR o.custom_packageID = p.packageID
-            LEFT JOIN custom_package_item cpi ON o.custom_packageID = cpi.custom_packageID OR o.pre_define_packageID = cpi.custom_packageID
-            LEFT JOIN item i ON cpi.itemID = i.itemID WHERE o.status = 'pending'
-            GROUP BY o.orderID";
+        GROUP_CONCAT(CONCAT(i.itemName, '-', cpi.amount) SEPARATOR ', ') AS itemNames  -- Combine items with amounts
+    FROM orders o 
+    INNER JOIN user u ON o.customerID = u.ID
+    INNER JOIN user_telno ut ON o.customerID = ut.ID
+    LEFT JOIN package p ON o.pre_define_packageID = p.packageID OR o.custom_packageID = p.packageID
+    LEFT JOIN custom_package_item cpi ON o.custom_packageID = cpi.custom_packageID OR o.pre_define_packageID = cpi.custom_packageID
+    LEFT JOIN item i ON cpi.itemID = i.itemID 
+    WHERE o.status = 'pending'
+    GROUP BY o.orderID";
+
     
     
             $result = mysqli_query($this->conn, $sql);
@@ -196,14 +198,39 @@ HTML;
 
     public function acceptOrder($orderID) {
         $this->orderID = $orderID;
-        $sql = "UPDATE orders SET status='accepted' WHERE orderID= '$this->orderID'";
     
-        if (mysqli_query($this->conn, $sql)) {
-            echo "<script>alert('Order Accepted!'); window.location='pendingOrders.php';</script>";
+        // Get custom_packageID from orders table
+        $sql = "SELECT custom_packageID FROM orders WHERE orderID = '$this->orderID'";
+        $result = mysqli_query($this->conn, $sql);
+    
+        if ($row = mysqli_fetch_assoc($result)) {
+            $custom_packageID = $row['custom_packageID'];
+    
+            // Get all itemID and amount from custom_package_item table
+            $sql = "SELECT itemID, amount FROM custom_package_item WHERE custom_packageID = '$custom_packageID'";
+            $result = mysqli_query($this->conn, $sql);
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $itemID = $row['itemID'];
+                $amount = $row['amount'];
+    
+                // Update itemStock in item table by reducing the amount
+                $updateStockSql = "UPDATE item SET itemStock = itemStock - $amount WHERE itemID = '$itemID'";
+                mysqli_query($this->conn, $updateStockSql);
+            }
+    
+            // Finally, update the order status to 'accepted'
+            $updateOrderSql = "UPDATE orders SET status='accepted' WHERE orderID= '$this->orderID'";
+            if (mysqli_query($this->conn, $updateOrderSql)) {
+                echo "<script>alert('Order Accepted! Stock updated successfully.'); window.location='pendingOrders.php';</script>";
+            } else {
+                echo "<script>alert('Error updating order status!'); window.location='pendingOrders.php';</script>";
+            }
         } else {
-            echo "<script>alert('Error accepting order!'); window.location='pendingOrders.php';</script>";
+            echo "<script>alert('Order not found!'); window.location='pendingOrders.php';</script>";
         }
     }
+    
 
     public function viewCancelOrder() {
         $sql = "SELECT 

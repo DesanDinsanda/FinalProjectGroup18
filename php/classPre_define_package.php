@@ -1,8 +1,7 @@
 <?php
+
 class Pre_define_package extends Package {
     private $conn;
-    private $discount;
-    private $discountedPrice;
 
     // Constructor
     public function __construct($conn) {

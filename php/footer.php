@@ -68,7 +68,7 @@
                         <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@dreamsflora3750" target = "blank" class="social-icon"><i class="fab fa-youtube"></i></a>
                     </li>
                 </ul>
                 
@@ -87,16 +87,16 @@
         <span class="close-btn" onclick="toggleSharePopup()">&times;</span>
         <h4>Share this page</h4>
         <div class="share-icons">
-            <a href="https://api.whatsapp.com/send?text=Check%20this%20out:%20Dreams%20Flora%20-%20Your%20go-to%20floral%20expert%20for%20weddings,%20events,%20and%20special%20occasions!%20Visit%20us" target="_blank">
+            <a href="https://api.whatsapp.com/send?text=Check%20this%20out:%20Dreams%20Flora%20-%20Your%20go-to%20floral%20expert%20for%20weddings,%20events,%20and%20special%20occasions!%20Visit%20us%20https://www.facebook.com/share/19oZv8CM1f/" target="_blank">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/" target="_blank">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/share/19oZv8CM1f/" target="_blank">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://twitter.com/intent/tweet?url=https://www.youtube.com/&text=Check%20this%20out" target="_blank">
+            <a href="https://twitter.com/intent/tweet?url=https://www.facebook.com/share/19oZv8CM1f/" target="_blank">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a href="mailto:?subject=Check%20this%20out&body=https://www.youtube.com/">
+            <a href="mailto:?subject=Check%20this%20out&body=  https://www.facebook.com/share/19oZv8CM1f/">
                 <i class="fas fa-envelope"></i>
             </a>
         </div>

@@ -22,7 +22,6 @@
 <br><br><br><br><br>
 
 <?php
-session_start();
 include 'conf.php';
 include 'classPackage.php';
 include "classCustom_package.php";
