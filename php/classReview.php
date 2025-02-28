@@ -1,21 +1,21 @@
 <?php
 include 'conf.php';
 class Review {
-    private $description;
+    private $reviewDiscription;
     private $reviewID;
-    private $date;
+    private $reviewDate;
 
     public function __construct($db) {
         $this->conn = $db;
     }
-    public function getDescription() { return $this->description; }
-    public function setDescription($description) { $this->description = $description; }
+    public function getDescription() { return $this->reviewDiscription; }
+    public function setDescription($reviewDiscription) { $this->reviewDiscription = $reviewDiscription; }
 
     public function getReviewID() { return $this->reviewID; }
     public function setReviewID($reviewID) { $this->reviewID = $reviewID; }
 
-    public function getDate() { return $this->date; }
-    public function setDate($date) { $this->date = $date; }
+    public function getDate() { return $this->reviewDate; }
+    public function setDate($reviewDate) { $this->reviewDate = $reviewDate; }
 
 
     public function addReview($reviewDescription) {

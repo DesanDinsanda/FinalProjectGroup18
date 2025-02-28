@@ -15,7 +15,9 @@ class Customer extends User {
     }
 
     // Getters and Setters
-    public function getAge() { return $this->age; }
+    public function getAge() { 
+        return $this->age; 
+    }
     public function setAge($age) { $this->age = $age; }
 
     public function getDob() { return $this->dob; }
@@ -216,18 +218,17 @@ HTML;
     }
 
 
-    public function updateCustomerAccount($firstName, $lastName, $email, $password, $number,$ID,$dob, $province, $city, $streetName) {
+    public function updateCustomerAccount($firstName, $lastName, $email, $number,$ID,$dob, $province, $city, $streetName) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
-        $this->password = $password;
         $this->number = $number;
         $this->id = $ID;
         $this->dob = $dob;
         $this->province = $province;
         $this->city = $city;
         $this->streetName = $streetName;
-        $sql = "UPDATE user SET firstName = '$this->firstName', lastName = '$this->lastName', email = '$this->email', password = '$this->password' WHERE email = '$this->email' ";
+        $sql = "UPDATE user SET firstName = '$this->firstName', lastName = '$this->lastName', email = '$this->email'  WHERE email = '$this->email' ";
         $result = mysqli_query($this->conn, $sql);
     
     

@@ -3,7 +3,7 @@
 <nav class="navbar fixed-top navbar-expand-lg bg-light shadow">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="../images/drem11.jpeg" alt="Logo" width="125px">
+        <img src="../images/dreamsFloraLogo.jpg" alt="Logo" width="85px" >
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>

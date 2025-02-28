@@ -2,26 +2,16 @@
 include 'conf.php';
 require_once('../tcpdf/tcpdf.php'); 
 class Report {
-    private $reportID;
-    private $reportName;
-    private $reportDescription;
-    private $reportCreatedDate;
+    private $reportType;
+    
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
-    public function getReportID() { return $this->reportID; }
-    public function setReportID($reportID) { $this->reportID = $reportID; }
+    public function getReportType() { return $this->reportType; }
+    public function setReportType($reportType) { $this->reportType = $reportType; }
 
-    public function getReportName() { return $this->reportName; }
-    public function setReportName($reportName) { $this->reportName = $reportName; }
-
-    public function getReportDescription() { return $this->reportDescription; }
-    public function setReportDescription($reportDescription) { $this->reportDescription = $reportDescription; }
-
-    public function getReportCreatedDate() { return $this->reportCreatedDate; }
-    public function setReportCreatedDate($reportCreatedDate) { $this->reportCreatedDate = $reportCreatedDate; }
 
     public function viewReport($reportType) {
         $this->reportType = $reportType;

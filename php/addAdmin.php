@@ -11,9 +11,11 @@ if (isset($_POST['addAdminBtn'])) {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
 
+    $hashedPwd = password_hash($password, PASSWORD_BCRYPT);
+
     $admin = new Admin($conn);
 
-    if ($admin->createAccount($firstName,$lastName,$email,$password,$number)) {
+    if ($admin->createAccount($firstName,$lastName,$email,$hashedPwd,$number)) {
         header("Location: adminHome.php"); 
         exit;
     } else {

@@ -23,7 +23,6 @@ if (mysqli_num_rows($result) > 0) {
 
 if (isset($_POST['updateProfile'])) {
     $firstName = $_POST['firstName'];
-    $pass = $_POST['password'] ;
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $number = $_POST['mobile'];
@@ -33,7 +32,7 @@ if (isset($_POST['updateProfile'])) {
     include 'classUser.php';
     $user = new User($conn);
 
-    if($user->updateAccount($firstName, $lastName, $email, $pass, $number,$ID)){
+    if($user->updateAccount($firstName, $lastName, $email, $number,$ID)){
       echo "<script>alert('Succesfully Updated'); window.location='eventManagerProfile.php';</script>";
     }else {
         echo "<script>alert('There is an Error'); window.location='eventManagerProfile.php';</script>";
@@ -58,7 +57,6 @@ if (isset($_POST['updateProfile'])) {
         var lastName = document.getElementById("last-name").value.trim();
         var email = document.getElementById("email").value.trim();
         var mobile = document.getElementById("mobile").value.trim();
-        var password = document.getElementById("passwords").value.trim();
 
         // First Name Validation
         if (firstName === "") {
@@ -91,11 +89,6 @@ if (isset($_POST['updateProfile'])) {
             return false;
         }
 
-        // Password Validation
-        if (password === "") {
-            alert("Please enter your password");
-            return false;
-        }
 
         return true; 
     }
@@ -129,10 +122,7 @@ if (isset($_POST['updateProfile'])) {
         <input type="tel" id="mobile" name="mobile" value="<?php echo $userData['telNO']; ?>" required>
       </div>
       
-      <div class="form-group">
-        <label for="passwords">Password</label>
-        <input type="password" id="passwords" name="password" value="<?php echo $userData['password']; ?>" required>
-      </div>
+      
       <div class="btn-group">
         <button type="button" class="btn btn-cancel" onclick="window.location.href='eventManagerHome.php'">Cancel</button>
         <button type="submit" class="btn btn-save" name="updateProfile">Update</button>

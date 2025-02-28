@@ -13,11 +13,12 @@ if (isset($_POST['addCustomerBtn'])) {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
 
+    $hashedPwd = password_hash($password, PASSWORD_BCRYPT);
     // Create a new Customer object
     $customer = new Customer($conn);
 
     // Call the createAccount method
-    if ($customer->createAccount($firstName,$lastName,$email,$password,$number)) {
+    if ($customer->createAccount($firstName,$lastName,$email,$hashedPwd,$number)) {
         header("Location: ../html/login.html"); // Redirect to login page on success
         exit;
     } else {

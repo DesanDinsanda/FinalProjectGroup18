@@ -21,7 +21,6 @@ if (mysqli_num_rows($result) > 0) {
 
 if (isset($_POST['updateProfile2'])) {
     $firstName = $_POST['firstName'];
-    $passw = $_POST['password'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $number = $_POST['mobile'];
@@ -35,7 +34,7 @@ if (isset($_POST['updateProfile2'])) {
     include 'classCustomer.php';
     $customer2 = new Customer($conn);
 
-    if($customer2->updateCustomerAccount($firstName, $lastName, $email, $passw, $number, $ID, $dob, $provin, $cit, $streetN)) {
+    if($customer2->updateCustomerAccount($firstName, $lastName, $email, $number, $ID, $dob, $provin, $cit, $streetN)) {
         echo "<script>alert('Updated successfully!'); window.location='customerProfile.php';</script>";
     } else {
         echo "<script>alert('Error updating profile'); window.location='customerProfile.php';</script>";
@@ -161,19 +160,29 @@ if (isset($_POST['updateProfile2'])) {
         var lastName = document.getElementById("last-name").value.trim();
         var email2 = document.getElementById("email2").value.trim();
         var mobile = document.getElementById("mobile").value.trim();
-        var password = document.getElementById("passwords").value.trim();
-
-        if (firstName === "") { alert("Please enter your first name"); return false; }
-        if (lastName === "") { alert("Please enter your last name"); return false; }
-
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (email2 === "") { alert("Please enter your email"); return false; }
-        if (!emailRegex.test(email2)) { alert("Please enter a valid email address"); return false; }
 
-        if (mobile === "") { alert("Please enter your mobile number"); return false; }
-        if (isNaN(mobile)) { alert("Please enter a valid mobile number"); return false; }
+        if (firstName === "") { 
+          alert("Please enter your first name"); return false; 
+        }
+        if (lastName === "") { 
+          alert("Please enter your last name"); return false; 
+        }
+       
+        if (email2 === "") { 
+          alert("Please enter your email"); return false; 
+        }
+        if (!emailRegex.test(email2)) { 
+          alert("Please enter a valid email address"); return false; 
+        }
 
-        if (password === "") { alert("Please enter your password"); return false; }
+        if (mobile === "") { 
+          alert("Please enter your mobile number"); return false; 
+        }
+        if (isNaN(mobile)) { 
+          alert("Please enter a valid mobile number"); return false; 
+        }
+
 
         return true; 
     }
@@ -212,10 +221,7 @@ if (isset($_POST['updateProfile2'])) {
           <label for="mobile">Mobile Number</label>
           <input type="tel" id="mobile" name="mobile" value="<?php echo $userData['telNO']; ?>">
         </div>
-        <div class="form-group">
-          <label for="passwords">Password</label>
-          <input type="password" id="passwords" name="password" value="<?php echo $userData['password']; ?>" required>
-        </div>
+        
       </div>
       <div class="form-row">
         <div class="form-group">

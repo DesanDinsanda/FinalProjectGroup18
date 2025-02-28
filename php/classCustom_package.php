@@ -41,7 +41,7 @@ class CustomPackage extends Package {
                 echo '
                     <div class="col-md-4 item-card">
                         <div class="card card-hover mb-4">
-                            <img src="../uploads/' . $row['itemPhoto'] . '" class="card-img-top" alt="Item Image" style="height: 200px; object-fit: cover;">
+                            <img src="../uploads/' . $row['itemPhoto'] . '" class="card-img-top" alt="Item Image" style="height: 300px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title">' . $row['itemName'] . '</h5>
                                 <p class="card-text"><strong>Price:</strong> RS ' . $row['itemPrice'] . '</p>

@@ -1,5 +1,5 @@
 <?php
-include 'conf.php'; // Include your database connection file
+include 'conf.php'; 
 include 'classUser.php';
 
 if (isset($_POST['loginBtn'])) {

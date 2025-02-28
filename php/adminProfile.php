@@ -23,7 +23,6 @@ if (mysqli_num_rows($result) > 0) {
 
 if (isset($_POST['updateProfile2'])) {
     $firstName = $_POST['firstName'];
-    $pass = $_POST['password'] ;
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $number = $_POST['mobile'];
@@ -35,7 +34,7 @@ if (isset($_POST['updateProfile2'])) {
 
     
 
-    if($user2->updateAccount($firstName, $lastName, $email, $pass, $number,$ID)  ){
+    if($user2->updateAccount($firstName, $lastName, $email, $number,$ID)  ){
         echo "<script>alert('Updated succesfully!'); window.location='adminProfile.php';</script>";
       }else {
           echo "<script>alert('There is an Error'); window.location='adminProfile.php';</script>";
@@ -72,7 +71,6 @@ if (isset($_POST['updateProfile2'])) {
         var lastName = document.getElementById("last-name").value.trim();
         var email2 = document.getElementById("email2").value.trim();
         var mobile = document.getElementById("mobile").value.trim();
-        var password = document.getElementById("passwords").value.trim();
 
         // First Name Validation
         if (firstName === "") {
@@ -105,11 +103,7 @@ if (isset($_POST['updateProfile2'])) {
             return false;
         }
 
-        // Password Validation
-        if (password === "") {
-            alert("Please enter your password");
-            return false;
-        }
+        
 
         return true; 
     }
@@ -143,11 +137,7 @@ if (isset($_POST['updateProfile2'])) {
         <input type="tel" id="mobile" name="mobile" value="<?php echo $userData['telNO']; ?>" >
       </div>
       
-      <div class="form-group">
-        <label for="passwords">Password</label>
-        <input type="password" id="passwords" name="password" value="<?php echo $userData['password']; ?>" required>
-      </div>
-      <div class="btn-group">
+      
 
       <script>
       function confirmDelete() {

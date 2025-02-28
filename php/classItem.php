@@ -135,6 +135,10 @@ HTML;
         // Delete related records in pre_define_package_item first
         $delete_related_sql = "DELETE FROM pre_define_package_item WHERE itemID = '$this->item_id'";
         mysqli_query($this->conn, $delete_related_sql);
+
+
+        $delete_related_sql2 = "DELETE FROM custom_package_item WHERE itemID = '$this->item_id'";
+        mysqli_query($this->conn, $delete_related_sql2);
     
         // Delete related records in item_supplier
         $delete_supplier_sql = "DELETE FROM item_supplier WHERE itemID = '$this->item_id'";
