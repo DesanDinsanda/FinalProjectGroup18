@@ -1,9 +1,9 @@
 <?php
 class FAQ {
     private $conn;
-    protected $faqID;
-    protected $question;
-    protected $answer;
+    private $faqID;
+    private $question;
+    private $answer;
 
     public function __construct($db) {
         $this->conn = $db;
