@@ -139,7 +139,7 @@ HTML;
         p.packageName, 
         p.price,   
         u.firstName, 
-        ut.telNO, 
+        ut.telNO,
         GROUP_CONCAT(CONCAT(i.itemName, '-', cpi.amount) SEPARATOR ', ') AS itemNames  -- Combine items with amounts
     FROM orders o 
     INNER JOIN user u ON o.customerID = u.ID

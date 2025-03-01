@@ -49,7 +49,7 @@ if (isset($_POST['updateProfile'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Edit Profile</title>
+  <title>Update event manager account interface</title>
 
   <script>
     function validateForm() {

@@ -2,7 +2,7 @@
 include "conf.php";
 
 // SQL query to get package and associated items
-$sql = "SELECT p.packageID, p.packageName, p.price, p.eventType, p.discount,
+$sql = "SELECT p.packageID, p.packageName, p.price, p.eventType, p.discount, MAX(pi.updatedDate) AS updatedDate, MAX(pi.itemCount) AS totalItems,
        GROUP_CONCAT(i.itemName ORDER BY i.itemID SEPARATOR ', ') AS items
         FROM package p 
         LEFT JOIN pre_define_package_item pi ON p.packageID = pi.pre_define_packageID
@@ -17,6 +17,7 @@ include "adminNavbar.php";
 echo '
 <html>
 <head>
+<title>Manage package Interface</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -99,7 +100,9 @@ echo '
                             <th>Price</th>
                             <th>Discount</th>
                             <th>Price with Discount</th>
-                            <th>Event Type</th>';
+                            <th>Event Type</th>
+                            <th>Updated Date</th>
+                            <th>Total Items</th>';
                             
                             
                             // Loop to display headers for items
@@ -135,7 +138,9 @@ if (mysqli_num_rows($result) > 0) {
                             <td>' . $row['price'] . '</td>
                             <td>' . $row['discount'] . '%</td>
                             <td>Rs ' . number_format($discountedPrice) . '</td>
-                            <td>' . $row['eventType'] . '</td>';
+                            <td>' . $row['eventType'] . '</td>
+                            <td>' . $row['updatedDate'] . '</td>
+                            <td>' . $row['totalItems'] . '</td>';
                             
                             // Display item values dynamically
                             for ($i = 0; $i < 20; $i++) {
