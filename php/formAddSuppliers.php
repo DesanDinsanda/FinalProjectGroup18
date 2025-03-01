@@ -30,6 +30,18 @@ echo '
     }
 
     </style>
+
+    <script>
+    function confirmDelete() {
+    const confirmation = confirm("Are you sure you want to Delete this Supplier?");
+    if (confirmation) {
+      window.location.href = "formAddSuppliers.php"; // Redirect to logout if  is clicked
+      return true;
+    }
+      return false;
+    // If  is clicked, nothing happens and the user stays on the page
+   }
+    </script>
     
     
 </head>
@@ -103,7 +115,7 @@ if (mysqli_num_rows($result) > 0) {
                             <td>' . $row['streetName'] . '</td>
                             <td>
                                 <a class="btn btn-info" href="editSupplier.php?supplierID=' . $row['supplierID'] . '">Edit</a>
-                                <a class="btn btn-danger" href="deleteSupplier.php?supplierID=' . $row['supplierID'] . '">Delete</a>
+                                <a class="btn btn-danger" onclick="return confirmDelete()" href="deleteSupplier.php?supplierID=' . $row['supplierID'] . '">Delete</a>
                             </td>
                         </tr>';
     }

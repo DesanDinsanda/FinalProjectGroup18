@@ -31,7 +31,7 @@ $sql = "SELECT
     LEFT JOIN package p ON o.pre_define_packageID = p.packageID OR o.custom_packageID = p.packageID
     LEFT JOIN custom_package_item cpi ON o.custom_packageID = cpi.custom_packageID OR o.pre_define_packageID = cpi.custom_packageID
     LEFT JOIN item i ON cpi.itemID = i.itemID
-    WHERE o.status = 'accepted' OR o.status = 'rescheduleAccepted' AND u.email = '$email'
+    WHERE u.email = '$email' AND (o.status = 'accepted' OR o.status = 'rescheduleAccepted')
     GROUP BY o.orderID";
 
 $result = mysqli_query($conn, $sql);

@@ -29,6 +29,18 @@ echo '
 
     </style>
     
+    <script>
+    function confirmDelete() {
+    const confirmation = confirm("Are you sure you want to Delete this FAQ?");
+    if (confirmation) {
+      window.location.href = "formAddFAQ.php"; // Redirect to logout if  is clicked
+      return true;
+    }
+      return false;
+    // If  is clicked, nothing happens and the user stays on the page
+   }
+    </script>
+    
     
 </head>
 <body>
@@ -72,7 +84,7 @@ if (mysqli_num_rows($result) > 0) {
                             <td>' . $row['answer'] . '</td>
                             <td>
                                 <a class="btn btn-info" href="editFAQ.php?faqID=' . $row['faqID'] . '">Edit</a>
-                                <a class="btn btn-danger" href="deleteFAQ.php?faqID=' . $row['faqID'] . '">Delete</a>
+                                <a class="btn btn-danger" onclick="return confirmDelete()" href="deleteFAQ.php?faqID=' . $row['faqID'] . '">Delete</a>
                             </td>
                         </tr>';
     }

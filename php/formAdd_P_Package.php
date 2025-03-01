@@ -35,6 +35,18 @@ echo '
     }
 
     </style>
+
+    <script>
+    function confirmDelete() {
+    const confirmation = confirm("Are you sure you want to Delete this package?");
+    if (confirmation) {
+      window.location.href = "formAdd_P_Package.php"; // Redirect to logout if  is clicked
+      return true;
+    }
+      return false;
+    // If  is clicked, nothing happens and the user stays on the page
+    }
+    </script>
     
     
 </head>
@@ -142,7 +154,7 @@ if (mysqli_num_rows($result) > 0) {
                             
                                 echo '<form action="removeDiscount.php" method="post" style="display:inline;">
                                     <input type="hidden" name="packageID" value="' . $row['packageID'] . '">
-                                    <button type="submit" name="removeDiscount" class="btn btn-danger btn-sm">Remove Discount</button>
+                                    <button type="submit" name="removeDiscount" class="btn btn-danger btn-sm" onclick="return confirmDelete()">Remove Discount</button>
                                 </form>';
                             
 
@@ -151,7 +163,7 @@ if (mysqli_num_rows($result) > 0) {
                             echo '
                             <td>
                                 <a class="btn btn-info" href="edit_P_Package.php?packageID=' . $row['packageID'] . '">Edit</a>
-                                <a class="btn btn-danger" href="delete_P_Package.php?packageID=' . $row['packageID'] . '">Delete</a>
+                                <a class="btn btn-danger" onclick="return confirmDelete()" href="delete_P_Package.php?packageID=' . $row['packageID'] . '">Delete</a>
                             </td>
                         </tr>';
     }
