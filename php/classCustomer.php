@@ -39,6 +39,21 @@ class Customer extends User {
         $this->email = $email;
         $this->password = $password;
         $this->number = $number;
+
+        session_start();
+
+        
+    $checkEmailSQL = "SELECT ID FROM user WHERE email = '$email'";
+    $result = mysqli_query($this->conn, $checkEmailSQL);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>
+                alert('Email already exists!');
+                window.history.back();
+              </script>";
+        exit();
+    }
+
     
         $sql = "INSERT INTO user (firstName, lastName, email, password) VALUES ('$this->firstName','$this->lastName','$this->email','$this->password')";
     
