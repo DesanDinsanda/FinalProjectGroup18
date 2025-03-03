@@ -239,7 +239,6 @@ HTML;
         }
 
     
-    // Method to add a new supllier
     public function addSupplier($firstName, $lastName, $telNO, $email, $province, $city, $streetName) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -250,7 +249,6 @@ HTML;
         $this->streetName = $streetName;
 
     
-        // Insert supplier details
         $sql = "INSERT INTO supplier (firstName, lastName, email, province, city, streetName) 
                 VALUES ('$this->firstName', '$this->lastName', '$this->email', '$this->province', '$this->city', '$this->streetName')";
 
@@ -293,7 +291,6 @@ HTML;
         }
     }
 
-    // Method to update supplier details
     public function editSupplier($supplierID, $firstName, $lastName, $telNO, $email, $province, $city, $streetName) {
         $sql = "UPDATE supplier SET firstName = '$firstName', lastName = '$lastName', email = '$email', 
                 province = '$province', city = '$city', streetName = '$streetName' 

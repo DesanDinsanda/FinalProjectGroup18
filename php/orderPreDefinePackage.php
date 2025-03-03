@@ -15,7 +15,6 @@ if ($row = mysqli_fetch_assoc($result2)) {
     die("Customer not found.");
 }
 
-// Check if form is submitted
 if (isset($_POST['btnOrder'])) {
     $location = mysqli_real_escape_string($conn, $_POST['evntLocation']);
     $eventDate = mysqli_real_escape_string($conn, $_POST['eventDate']);
@@ -28,7 +27,6 @@ if (isset($_POST['btnOrder'])) {
         die("Package not selected.");
     }
 
-    // Call the method
     $orders->orderPreDefinePackage($customerID, $location, $eventDate, $eventTime, $packageID);
 }
 

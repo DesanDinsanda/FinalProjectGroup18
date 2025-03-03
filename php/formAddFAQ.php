@@ -1,7 +1,6 @@
 <?php
 include "conf.php";
 
-// SQL query to get items
 $sql = "SELECT * FROM faq";
 
 $result = mysqli_query($conn, $sql);

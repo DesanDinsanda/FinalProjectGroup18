@@ -15,7 +15,7 @@
         var orderID = '';
 
         function confirmAction(orderId, action) {
-            orderID = orderId; // Store the order ID
+            orderID = orderId; 
 
             if (action === 'cancel') {
                 document.getElementById("confirmMessage").textContent = "Are you sure you want to cancel this order?";

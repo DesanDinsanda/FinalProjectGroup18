@@ -26,7 +26,6 @@ if (isset($_POST['btnOrderCustom'])) {
         die("Error: No items in the custom package.");
     }
 
-    // Call the method
     $orders->orderCustomPackage($customerID, $location, $eventDate, $eventTime, $_SESSION['cart']);
 }
 

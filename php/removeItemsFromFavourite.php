@@ -20,15 +20,13 @@ if ($row = mysqli_fetch_assoc($result)) {
     die("Error: Customer not found.");
 }
 
-// Check if the itemID is posted
+
 if (isset($_POST['removeFromFavourite'])) {
     $itemID = $_POST['itemID'];
 
-    // Call the method to remove the item from favorites
     $customPackage = new CustomPackage($conn);
     $customPackage->removeItemsFromFavourite($itemID);
 
-    // Redirect to the favorite items page
     header("Location: viewItemsInFavourite.php");
     exit();
 }

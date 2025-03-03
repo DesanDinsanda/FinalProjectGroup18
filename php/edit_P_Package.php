@@ -4,7 +4,7 @@ include 'classPackage.php';
 include 'classPre_define_package.php';
 
 if (isset($_GET['packageID'])) {
-    // Create a new Pre_define_package object
+    
     $package = new Pre_define_package($conn);
     
     // Get packageID from URL
@@ -16,7 +16,7 @@ if (isset($_GET['packageID'])) {
 }
 
 if (isset($_POST['submit'])) {
-    // Collect form data
+   
     $name = $_POST['name'];
     $price = $_POST['price'];
     $type = $_POST['type'];
@@ -29,13 +29,10 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Create a new Pre_define_package object
     $package = new Pre_define_package($conn);
 
-    // Call updatePackage method (with correct parameters)
     $message = $package->updatePackage($packageID, $name, $price, $type, $updatedItems);
 
-    // Display success message and redirect
     echo "<script>alert('$message'); window.location='formAdd_P_Package.php';</script>";
 }
 ?>

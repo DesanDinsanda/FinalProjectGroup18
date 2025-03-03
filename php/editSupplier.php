@@ -3,13 +3,11 @@ include 'conf.php';
 include 'classSupplier.php';
 
 if (isset($_GET['supplierID'])) {
-    // Create a new Supplier object
+    
     $supplier = new Supplier($conn);
 
-    // Get supplierID from URL
     $supplierID = $_GET['supplierID'];
 
-    // Fetch supplier details
     $supplierDetails = $supplier->getSupplierDetails($supplierID);
 
     if (!$supplierDetails) {
@@ -19,7 +17,6 @@ if (isset($_GET['supplierID'])) {
 }
 
 if (isset($_POST['submit'])) {
-    // Collect form data
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $telNO = $_POST['telNO'];
@@ -28,13 +25,10 @@ if (isset($_POST['submit'])) {
     $city = $_POST['city'];
     $streetName = $_POST['streetName'];
 
-    // Create a new Supplier object
     $supplier = new Supplier($conn);
 
-    // Call editSupplier method (with correct parameters)
     $message = $supplier->editSupplier($supplierID, $firstName, $lastName, $telNO, $email, $province, $city, $streetName);
 
-    // Display success message and redirect
     echo "<script>alert('$message'); window.location='formAddSuppliers.php';</script>";
 }
 ?>
@@ -50,7 +44,7 @@ if (isset($_POST['submit'])) {
 
     <style>
     .form-container {
-    background-color: #fdecf6;  /* Red background */
+    background-color: #fdecf6;  
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }

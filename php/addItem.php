@@ -1,6 +1,6 @@
 <?php
-include 'conf.php'; // Include database connection
-include 'classItem.php';  // Include the Item class
+include 'conf.php'; 
+include 'classItem.php';  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
@@ -19,10 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $supplier_id = $_POST['supplierEmail'];
     }
 
-    // Create an instance of the Item class and pass only the database connection
     $item = new Items($conn);
 
-    // Add the item to the database using the addItem method
+   
     $result = $item->addItem($item_name, $item_EventType, $item_price, $item_stock, $item_source, $product_image, $supplier_id);
 
     if ($result === "Item added successfully!") {

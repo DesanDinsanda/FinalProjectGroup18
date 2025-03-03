@@ -3,10 +3,10 @@ include 'conf.php';
 include 'classFAQ.php';
 
 if (isset($_POST['submitFAQ'])) {
-    // Create a new FAQ object
+    
     $faq = new FAQ($conn);
 
-    // Set faq details 
+    
     $question = $_POST['question'];
     $answer = $_POST['answer'];
 

@@ -1,7 +1,7 @@
 calendar.php
 
 <?php
-// Database connection
+
 include 'conf.php';
 ?>
 <!DOCTYPE html>

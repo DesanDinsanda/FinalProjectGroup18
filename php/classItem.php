@@ -102,7 +102,6 @@ HTML;
             return "Failed to upload the image.";
         }
     
-        // Insert item into 'item' table
         $sql = "INSERT INTO item (itemName, itemEventType, itemPrice, itemPhoto, itemStock, itemSource) 
                 VALUES ('$this->item_name', '$this->item_EventType', $this->item_price, '$image_path', $this->item_stock, '$this->item_source')";
     
@@ -128,7 +127,6 @@ HTML;
     }
     
 
-    // Method to delete an item from the database
     public function deleteItem($item_id) {
         $this->item_id = $item_id;
     

@@ -2,7 +2,6 @@
 include 'conf.php';
 include 'classFAQ.php';
 
-// Create a new FAQ object
 $faq = new FAQ($conn);
 
 // Fetch all FAQs

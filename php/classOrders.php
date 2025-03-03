@@ -455,8 +455,8 @@ HTML;
     
    
     public function orderPreDefinePackage($customerID, $location, $eventDate, $eventTime, $packageID) {
-        $orderDate = date('Y-m-d'); // Get current date
-        $status = 'pending'; // Default order status
+        $orderDate = date('Y-m-d'); 
+        $status = 'pending'; 
 
         // SQL query to insert order details
         $sql = "INSERT INTO orders (orderDate, status, eventDate, eventTime, eventLocation, pre_define_packageID, customerID) 
@@ -496,7 +496,7 @@ HTML;
             die("Error: No items in the custom package.");
         }
 
-        $orderDate = date('Y-m-d'); // Current date
+        $orderDate = date('Y-m-d'); 
         $status = 'pending';
 
         // Calculate the total price of the custom package
@@ -518,7 +518,7 @@ HTML;
         }
 
         $packageName = 'Custom Package'; // Default name
-        $discount = 0; // No discount for custom packages
+        $discount = 0; 
 
         // Insert package details
         $sqlPackage = "INSERT INTO package (eventType, packageName, price, discount) 

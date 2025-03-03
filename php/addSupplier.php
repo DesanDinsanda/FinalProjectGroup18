@@ -3,7 +3,7 @@ include 'conf.php';
 include 'classSupplier.php';
 
 if (isset($_POST['submitSupplier'])) {
-    // Create a new Supplier object
+    
     $supplier = new Supplier($conn);
 
     // Set supplier details 
@@ -15,7 +15,6 @@ if (isset($_POST['submitSupplier'])) {
     $city = $_POST['city'];
     $streetName = $_POST['streetName'];
 
-    // Use getters to pass correct values
     $message = $supplier->addSupplier($firstName, $lastName, $telNO, $email, $province, $city, $streetName);
 
     echo "<script>alert('$message'); window.location='formAddSuppliers.php';</script>";

@@ -228,7 +228,6 @@ class CustomPackage extends Package {
             ];
         }
     
-        // View items in favourites
         public function viewItemsInFavourite() {
             if (isset($_SESSION['favourites']) && !empty($_SESSION['favourites'])) {
                 echo '<div class="container mt-4">
@@ -259,7 +258,6 @@ class CustomPackage extends Package {
         }
         
     
-        // Remove item from favourites
         public function removeItemsFromFavourite($itemID) {
             if (isset($_SESSION['favourites'])) {
                 foreach ($_SESSION['favourites'] as $key => $item) {

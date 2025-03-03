@@ -9,13 +9,11 @@ class FAQ {
         $this->conn = $db;
     }
 
-    // Method to add a new faq
 public function addFAQ($question, $answer) {
     // Escape special characters in the question and answer
     $question = mysqli_real_escape_string($this->conn, $question);
     $answer = mysqli_real_escape_string($this->conn, $answer);
 
-    // Insert FAQ details using the escaped variables
     $sql = "INSERT INTO faq (question, answer) 
             VALUES ('$question', '$answer')";
 
@@ -42,7 +40,6 @@ public function addFAQ($question, $answer) {
 
 
 
-    // Method to get FAQ details by faqID
     public function getFAQDetails($faqID) {
     $faqID = mysqli_real_escape_string($this->conn, $faqID);  // Escape the faqID to prevent SQL injection
 
@@ -57,7 +54,6 @@ public function addFAQ($question, $answer) {
 }
 
 
-    // Method to update FAQ details
     public function editFAQ($faqID, $question, $answer) {
     $faqID = mysqli_real_escape_string($this->conn, $faqID);  // Escape faqID
     $question = mysqli_real_escape_string($this->conn, $question);  // Escape question

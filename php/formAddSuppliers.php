@@ -1,7 +1,6 @@
 <?php
 include "conf.php";
 
-// SQL query to get items
 $sql = "SELECT s.supplierID, s.firstName, s.lastName, s.email, s.province, s.city, s.streetName, t.telNO 
         FROM supplier s 
         LEFT JOIN supplier_telno t ON s.supplierID = t.supplierID";

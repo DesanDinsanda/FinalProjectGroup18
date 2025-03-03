@@ -20,7 +20,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     die("Error: Customer not found.");
 }
 
-// Ensure item details are passed
+
 if (isset($_POST['addItemsToFavourite'])) {
     $itemID = $_POST['itemID'];
     $itemName = $_POST['itemName'];

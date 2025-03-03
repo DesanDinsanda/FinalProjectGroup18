@@ -3,7 +3,7 @@ include 'conf.php';
 include 'classPackage.php';
 include 'classPre_define_package.php';
 
-$package = new Pre_define_package($conn); // Create an instance of Package
+$package = new Pre_define_package($conn); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $packageID = $_POST['packageID'];

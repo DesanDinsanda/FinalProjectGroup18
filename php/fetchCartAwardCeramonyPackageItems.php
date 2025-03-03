@@ -64,7 +64,6 @@ $itemEventType = "AwardCeramony"; // Change dynamically if needed
     <h2 class="text-center mt-4">Custom Package for <?php echo $itemEventType; ?></h2>
 
     <?php
-    // Call the method to display items
     $customPackage->viewCustomPackage($itemEventType);
     ?>
 

@@ -1,5 +1,4 @@
 <?php
-// Database connection
 include 'conf.php';
 
 if (isset($_GET['eventDate'])) {

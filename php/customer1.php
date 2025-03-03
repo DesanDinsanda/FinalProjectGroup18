@@ -40,7 +40,6 @@ class Customer {
         $this->password = $password;
         $this->number = $number;
     
-        // Insert into user table first
         $sql = "INSERT INTO user (firstName, lastName, email, password) VALUES ('$firstName','$lastName','$email','$password')";
     
         if (mysqli_query($this->conn, $sql)) {  // Use $this->conn

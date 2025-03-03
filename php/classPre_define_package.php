@@ -3,7 +3,7 @@
 class Pre_define_package extends Package {
     private $conn;
 
-    // Constructor
+
     public function __construct($conn) {
         $this->conn = $conn;
     }
@@ -29,7 +29,7 @@ class Pre_define_package extends Package {
 
             // Calculate total item count
             $itemCount = count($items);
-            $updatedDate = date("Y-m-d"); // Get today's date
+            $updatedDate = date("Y-m-d"); 
     
             // Insert package items
             foreach ($items as $itemName) {
@@ -62,7 +62,6 @@ class Pre_define_package extends Package {
     }
     
 
-    // Method to delete a package
     public function deletePackage($packageID) {
         $this->packageID = $packageID;
 
@@ -81,7 +80,6 @@ class Pre_define_package extends Package {
         }
     }
 
-    // Method to fetch package details
 public function getPackageDetails($packageID) {
     $this->packageID = $packageID;
     $sql = "SELECT * FROM package WHERE packageID = '$this->packageID'";
@@ -89,7 +87,6 @@ public function getPackageDetails($packageID) {
     return mysqli_fetch_assoc($result);
 }
 
-// Method to fetch associated items for a package
 public function getPackageItems($packageID) {
     $this->packageID = $packageID;
     $sql = "SELECT i.itemName FROM pre_define_package_item pi 
@@ -105,7 +102,6 @@ public function getPackageItems($packageID) {
     return $items;
 }
 
-// Method to update a package
 public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
     $this->packageID = $packageID;
     $this->packageName = $name;
@@ -134,7 +130,7 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
 
     // Calculate total item count
     $itemCount = count($updatedItems);
-    $updatedDate = date("Y-m-d"); // Get today's date
+    $updatedDate = date("Y-m-d"); 
 
     // Insert updated items
     foreach ($updatedItems as $itemName) {
@@ -182,7 +178,7 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                // Assign values to private attributes
+               
                 $this->packageID = $row['packageID'];
                 $this->packageName = $row['packageName'];
                 $this->price = $row['price'];
@@ -248,7 +244,6 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
 
 
 
-    // Add Discount Method 
     public function addDiscount($packageID, $discount) {
         if ($discount < 1 || $discount > 100) {
             return "Invalid discount value!";
@@ -263,7 +258,6 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
         }
     }
 
-    // Remove Discount Method
     public function removeDiscount($packageID) {
         $sql = "UPDATE package SET discount = NULL WHERE packageID = $packageID";
 

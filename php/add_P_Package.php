@@ -4,10 +4,9 @@ include 'classPackage.php';
 include 'classPre_define_package.php';
 
 if (isset($_POST['submit'])) {
-    // Create a new Pre_define_package object
+
     $package = new Pre_define_package($conn);
 
-    // Set package details using setters
     $package->setPackageName($_POST['name']);
     $package->setPrice($_POST['price']);
     $package->setEventType($_POST['type']);
@@ -20,7 +19,6 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Use getters to pass correct values
     $message = $package->addPackage(
         $package->getPackageName(), 
         $package->getPrice(), 

@@ -1,11 +1,10 @@
 <?php
-include 'conf.php';  // Include database connection
+include 'conf.php'; 
 
-// Include the Customer class
 include 'classCustomer.php';
 
 if (isset($_POST['addCustomerBtn'])) {
-    // Get form values
+   
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];

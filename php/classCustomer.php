@@ -32,7 +32,7 @@ class Customer extends User {
     public function getStreetName() { return $this->streetName; }
     public function setStreetName($streetName) { $this->streetName = $streetName; }
 
-    // Method to create an account
+
     public function createAccount($firstName, $lastName, $email, $password, $number) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -77,7 +77,6 @@ class Customer extends User {
     }
 
 
-    //Method to View customers
     public function viewCustomer() {
         $sql = "SELECT u.ID, u.firstName, u.lastName, u.email, ut.telNO, MIN(o.orderID) AS orderID
                 FROM user u

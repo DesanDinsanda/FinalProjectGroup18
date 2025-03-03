@@ -1,7 +1,6 @@
 <?php
 include "conf.php";
 
-// SQL query to get items
 $sql = "SELECT * from item WHERE itemSource IN ('Supplied', 'Company')";
 
 $result = mysqli_query($conn, $sql);

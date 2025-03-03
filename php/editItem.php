@@ -36,10 +36,8 @@ if (isset($_POST['submit'])) {
         $itemPhoto = $itemDetails['itemPhoto']; // Keep old photo if not updated
     }
 
-    // Update item
     $message = $item->editItem($itemID, $itemName, $itemEventType, $itemPrice, $itemStock, $itemSource, $supplierID, $itemPhoto);
 
-    // Display success message and redirect
     echo "<script>alert('$message'); window.location='formAddItems.php';</script>";
 }
 ?>

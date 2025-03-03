@@ -3,13 +3,11 @@ include 'conf.php';
 include 'classFAQ.php';
 
 if (isset($_GET['faqID'])) {
-    // Create a new FAQ object
+   
     $faq = new FAQ($conn);
 
-    // Get faqID from URL
     $faqID = $_GET['faqID'];
 
-    // Fetch FAQ details
     $faqDetails = $faq->getFAQDetails($faqID);
 
     if (!$faqDetails) {
@@ -23,13 +21,10 @@ if (isset($_POST['submit'])) {
     $question = $_POST['question'];
     $answer = $_POST['answer'];
 
-    // Create a new FAQ object
     $faq = new FAQ($conn);
 
-    // Call editFAQ method
     $message = $faq->editFAQ($faqID, $question, $answer);
 
-    // Display success message and redirect
     echo "<script>alert('$message'); window.location='formAddFAQ.php';</script>";
 }
 ?>
