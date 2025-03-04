@@ -165,10 +165,8 @@ public function updatePackage($packageID, $name, $price, $type, $updatedItems) {
 
 
     public function viewPredefinePackages($eventType) {
-        $sql = "SELECT packageID, packageName, price, discount
-                FROM package 
-                WHERE eventType = '$eventType' 
-                AND packageName != 'custom Package'"; // Exclude customPackage
+        $sql = "SELECT packageID, packageName, price, discount FROM package WHERE eventType = '$eventType' 
+        AND packageName != 'custom Package'"; // Exclude customPackage
 
         $result = mysqli_query($this->conn, $sql);
 

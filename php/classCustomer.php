@@ -260,7 +260,7 @@ HTML;
     
     }
 
-    public function contactCustomer() {}
+    
     
 
     

@@ -6,19 +6,7 @@ if (isset($_GET['eventDate'])) {
 
     // Fetch event details for the clicked date
     $sql = "
-        SELECT 
-            o.orderID, 
-            o.orderDate, 
-            o.status, 
-            o.eventDate, 
-            o.eventTime, 
-            o.eventLocation,  
-            p.eventType, 
-            p.packageName, 
-            p.price,   
-            u.firstName, 
-            ut.telNO, 
-            GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames
+        SELECT o.orderID, o.orderDate, o.status, o.eventDate, o.eventTime, o.eventLocation,  p.eventType, p.packageName, p.price,   u.firstName, ut.telNO, GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames
         FROM orders o 
         INNER JOIN user u ON o.customerID = u.ID
         INNER JOIN user_telno ut ON o.customerID = ut.ID

@@ -9,6 +9,16 @@ class FAQ {
         $this->conn = $db;
     }
 
+    public function getFaqID() { return $this->faqID; }
+    public function setFaqID($faqID) { $this->faqID = $faqID; }
+
+    public function getQuestion() { return $this->question; }
+    public function setQuestion($question) { $this->question = $question; }
+
+    public function getAnswer() { return $this->answer; }
+    public function setAnswer($answer) { $this->answer = $answer; }
+    
+
 public function addFAQ($question, $answer) {
     // Escape special characters in the question and answer
     $question = mysqli_real_escape_string($this->conn, $question);

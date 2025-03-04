@@ -40,19 +40,8 @@ class Orders {
     public function setOrderAdvance($orderAdvance) { $this->orderAdvance = $orderAdvance; }
 
     public function viewAllOrderDetails() {
-        $sql = "SELECT 
-    o.orderID, 
-    o.orderDate, 
-    o.status, 
-    o.eventDate, 
-    o.eventTime, 
-    o.eventLocation,  
-    p.eventType, 
-    p.packageName, 
-    p.price,   
-    u.firstName, 
-    ut.telNO, 
-    GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames  -- Combine multiple items in one row
+        $sql = "SELECT o.orderID, o.orderDate, o.status, o.eventDate, o.eventTime, o.eventLocation,  p.eventType, p.packageName, p.price,   u.firstName, ut.telNO, 
+        GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames  
         FROM orders o 
         INNER JOIN user u ON o.customerID = u.ID
         INNER JOIN user_telno ut ON o.customerID = ut.ID
@@ -128,19 +117,8 @@ HTML;
 
 
     public function viewPlacedOrders() {
-        $sql = "SELECT 
-        o.orderID, 
-        o.orderDate, 
-        o.status, 
-        o.eventDate, 
-        o.eventTime, 
-        o.eventLocation,  
-        p.eventType, 
-        p.packageName, 
-        p.price,   
-        u.firstName, 
-        ut.telNO,
-        GROUP_CONCAT(CONCAT(i.itemName, '-', cpi.amount) SEPARATOR ', ') AS itemNames  -- Combine items with amounts
+        $sql = "SELECT o.orderID, o.orderDate, o.status, o.eventDate, o.eventTime, o.eventLocation,  p.eventType, p.packageName, p.price,   u.firstName, ut.telNO,
+        GROUP_CONCAT(CONCAT(i.itemName, '-', cpi.amount) SEPARATOR ', ') AS itemNames  
     FROM orders o 
     INNER JOIN user u ON o.customerID = u.ID
     INNER JOIN user_telno ut ON o.customerID = ut.ID
@@ -233,18 +211,7 @@ HTML;
     
 
     public function viewCancelOrder() {
-        $sql = "SELECT 
-        o.orderID, 
-        o.orderDate, 
-        o.status, 
-        o.eventDate, 
-        o.eventTime, 
-        o.eventLocation,  
-        p.eventType, 
-        p.packageName, 
-        p.price,   
-        u.firstName, 
-        ut.telNO, 
+        $sql = "SELECT o.orderID, o.orderDate, o.status, o.eventDate, o.eventTime, o.eventLocation,  p.eventType, p.packageName, p.price,   u.firstName, ut.telNO, 
         GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames  -- Combine multiple items in one row
             FROM orders o 
             INNER JOIN user u ON o.customerID = u.ID
@@ -285,18 +252,7 @@ HTML;
     }
 
     public function viewRescheduleOrders() {
-        $sql = "SELECT 
-        o.orderID, 
-        o.orderDate, 
-        o.status, 
-        o.eventDate, 
-        o.eventTime, 
-        o.eventLocation,  
-        p.eventType, 
-        p.packageName, 
-        p.price,   
-        u.firstName, 
-        ut.telNO, 
+        $sql = "SELECT o.orderID, o.orderDate, o.status, o.eventDate, o.eventTime, o.eventLocation,  p.eventType, p.packageName, p.price,   u.firstName, ut.telNO, 
         GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames  -- Combine multiple items in one row
             FROM orders o 
             INNER JOIN user u ON o.customerID = u.ID
@@ -364,17 +320,8 @@ HTML;
     
     public function viewOrderStatus() {
         $email = $_SESSION['email'];
-        $sql = "SELECT 
-            o.orderID, 
-            o.orderDate, 
-            o.status, 
-            o.eventDate, 
-            o.eventTime, 
-            o.eventLocation,  
-            p.eventType, 
-            p.packageName, 
-            p.price,    
-            GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames
+        $sql = "SELECT o.orderID, o.orderDate, o.status, o.eventDate, o.eventTime, o.eventLocation,  p.eventType, p.packageName, p.price,    
+                GROUP_CONCAT(i.itemName SEPARATOR ', ') AS itemNames
         FROM orders o 
         INNER JOIN user u ON o.customerID = u.ID
         LEFT JOIN package p ON o.pre_define_packageID = p.packageID OR o.custom_packageID = p.packageID

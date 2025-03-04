@@ -3,7 +3,6 @@ include 'conf.php';
 include 'classItem.php';  
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
     $item_name = $_POST['itemName'];
     $item_EventType = $_POST['itemEventType'];
     $item_price = $_POST['itemPrice'];

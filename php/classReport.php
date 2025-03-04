@@ -23,6 +23,7 @@ class Report {
             $query = "SELECT 
     u.ID AS customerID,
     CONCAT(u.firstName, ' ', u.lastName) AS customerName,
+    u.email AS customerEmail,
     COUNT(o.orderID) AS totalOrders,
     SUM(p.price) AS totalSpending
             FROM orders o
@@ -50,12 +51,7 @@ class Report {
             break;
 
         case "item": //Helps determine which items are frequently included in event packages.
-            $query = "SELECT 
-    i.itemID, 
-    i.itemName, 
-    i.itemPrice,
-    i.itemSource,
-    COUNT(cpi.itemID) AS timesUsed
+            $query = "SELECT i.itemID, i.itemName, i.itemPrice,i.itemSource,COUNT(cpi.itemID) AS timesUsed
             FROM item i
             LEFT JOIN custom_package_item cpi ON i.itemID = cpi.itemID WHERE itemSource IN ('Supplied', 'Company')
             GROUP BY i.itemID, i.itemName, i.itemPrice 
@@ -64,9 +60,7 @@ class Report {
             break;
 
         case "order": //Shows the total number of orders for each package and event type
-            $query = "SELECT 
-    p.packageName, 
-    p.eventType,
+            $query = "SELECT p.packageName, p.eventType,
     COUNT(o.orderID) AS totalOrders,
     SUM(p.price) AS totalRevenue,
     AVG(p.price) AS avgOrderValue,
@@ -104,6 +98,25 @@ class Report {
     $pdf->Cell(0, 12, strtoupper($this->reportType) . " REPORT", 0, 1, 'C');
     $pdf->Ln(5);
 
+    //test Description
+    $description = "";
+    $pdf->SetTextColor(255, 0, 0); 
+
+    if ($this->reportType == "item") {
+        $description = "Helps determine which items are frequently included in event packages Useful for managing stock and procurement.";
+    } elseif ($this->reportType == "customer") {
+        $description = "This report identifies high-value customers and helps to create loyalty programs or special offers.";
+    } elseif ($this->reportType == "order") {
+        $description = "This report Shows the total number of orders for each package and event type. Helps identify the most popular package and revenue generated.Provides insights into the first and most recent orders for each package.";
+    } elseif ($this->reportType == "Financial") {
+        $description = "This report includes financial statements, revenue details, and expense tracking.";
+    } else {
+        $description = "This report provides relevant insights based on the selected data category.";
+    }
+    
+    // Print the description
+    $pdf->MultiCell(0, 8, $description, 0, 'C');
+
     // Table Header Styling
     $pdf->SetFont('helvetica', 'B', 12);
     $pdf->SetFillColor(0, 102, 204); 
@@ -133,6 +146,6 @@ class Report {
     $pdf->Output('report.pdf', 'I'); 
     }
 
-    public function selectReportType() {}
+    
 }
 ?>

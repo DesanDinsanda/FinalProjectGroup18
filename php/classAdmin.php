@@ -25,7 +25,6 @@ class Admin extends User {
             return false;
         }
     
-        // Insert into user table
         $sql = "INSERT INTO user (firstName, lastName, email, password) 
                 VALUES ('$this->firstName','$this->lastName','$this->email','$this->password')";
     
@@ -42,7 +41,6 @@ class Admin extends User {
             if (mysqli_query($this->conn, $sql2) && mysqli_query($this->conn, $sql3)) {  
                 return true;
             } else {
-                // Rollback the user insertion if any error occurs
                 mysqli_query($this->conn, "DELETE FROM user WHERE ID = '$userID'");
                 return false;
             }

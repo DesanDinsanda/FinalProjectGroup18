@@ -37,6 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    setInterval(fetchNotifications, 5000); // Fetch every 5 seconds
+    setInterval(fetchNotifications, 5000); 
     fetchNotifications();
 });

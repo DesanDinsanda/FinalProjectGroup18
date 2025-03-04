@@ -136,7 +136,6 @@ class User {
   }
   
 
-    // If neither matches, show error
 //echo "<script>alert('Invalid email or password!'); window.location.href='../html/login.html';</script>";;
 
     }

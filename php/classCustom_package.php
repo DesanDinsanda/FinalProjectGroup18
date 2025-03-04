@@ -10,9 +10,9 @@ class CustomPackage extends Package {
         $sql = "UPDATE item SET itemPackageType = 'for custom package' WHERE itemID = '$itemID'";
 
         if (mysqli_query($this->conn, $sql)) {
-            return true; // Success
+            return true;
         } else {
-            return false; // Error
+            return false; 
         }
     }
 
@@ -20,9 +20,9 @@ class CustomPackage extends Package {
         $sql = "UPDATE item SET itemPackageType = 'for all packages' WHERE itemID = '$itemID'";
 
         if (mysqli_query($this->conn, $sql)) {
-            return true; // Success
+            return true; 
         } else {
-            return false; // Error
+            return false; 
         }
     }
 
@@ -237,7 +237,7 @@ class CustomPackage extends Package {
                 foreach ($_SESSION['favourites'] as $item) {
                     echo '<div class="col-md-4 item-card">
                             <div class="card card-hover mb-4">
-                                <img src="../uploads/' . $item['itemPhoto'] . '" class="card-img-top"alt="Item Image" style="height: 200px; object-fit: cover' . $item['itemName'] . '">
+                                <img src="../uploads/' . $item['itemPhoto'] . '" class="card-img-top"alt="Item Image" style="height: 300px; object-fit: cover' . $item['itemName'] . '">
                                 <div class="card-body">
                                     <h5 class="card-title">' . $item['itemName'] . '</h5>
                                     <p class="card-text">Price: Rs ' . number_format($item['itemPrice']) . '</p>

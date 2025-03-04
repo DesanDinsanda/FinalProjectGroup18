@@ -160,7 +160,11 @@ $result = $conn->query($sql);
             
             <textarea id="reviewText" class="form-control" placeholder="Add a comment..."></textarea>
         </div>
-        <button class="btn btn-primary comment-btn" id="addReviewBtn">Comment</button>
+        <?php if (isset($_SESSION['email'])): ?>
+        <button type="submit" class="btn btn-primary comment-btn" id="addReviewBtn">Comment</button>
+        <?php else: ?>
+        <button type="button" class="btn btn-secondary comment-btn" id="addReviewBtn" disabled>Comment (Login Required)</button>
+        <?php endif; ?>
 
         <div id="reviewSection" class="mt-4">
             <?php while ($row = $result->fetch_assoc()): ?>
