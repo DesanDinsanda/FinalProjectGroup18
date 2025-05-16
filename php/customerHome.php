@@ -135,7 +135,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <img src="../images/profile.jpeg" class="rounded-circle img-fluid mt-3" width="80">
+                        <img src="../images/comments/IMG_0086.PNG" class="rounded-circle img-fluid mt-3" width="80">
                         <h5 class="mt-2">Nethmi Vidanapathirana</h5>
                     </div>
                 </div>
@@ -152,8 +152,8 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <img src="../images/profile2.jpeg" class="rounded-circle img-fluid mt-3" width="80">
-                        <h5 class="mt-2">Hasindu Eshan</h5>
+                        <img src="../images/comments/IMG_0083.PNG" class="rounded-circle img-fluid mt-3" width="80">
+                        <h5 class="mt-2">Pasindu Lakshan</h5>
                     </div>
                 </div>
 
@@ -169,8 +169,8 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <img src="../images/desan.jpeg" class="rounded-circle img-fluid mt-3" width="80">
-                        <h5 class="mt-2">Desan Dinsanda</h5>
+                        <img src="../images/comments/IMG_0081.PNG" class="rounded-circle img-fluid mt-3" width="80">
+                        <h5 class="mt-2">Hiruna Dilmith</h5>
                     </div>
                 </div>
             </div>
